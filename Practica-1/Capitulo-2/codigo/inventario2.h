@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <list>
+#include <fstream>
 
 using namespace std;
 
