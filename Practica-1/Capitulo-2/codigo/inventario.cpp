@@ -112,11 +112,11 @@ void generadorInformes()
    costototal = costopedido+costomantenimiento+costodeficit;
    
 // Imprimir todas las medidas de rendimiento 
-   printf("\ncosto total = %.3f",costototal);
-   printf("\ncosto de pedido = %.3f",costopedido);
-   printf("\ncosto de mantenimiento = %.3f",costomantenimiento);
-   printf("\ncosto de deficit = %.3f",costodeficit);
-   printf("\n");
+  //  printf("\ncosto total = %.3f",costototal);
+  //  printf("\ncosto de pedido = %.3f",costopedido);
+  //  printf("\ncosto de mantenimiento = %.3f",costomantenimiento);
+  //  printf("\ncosto de deficit = %.3f",costodeficit);
+  //  printf("\n");
    
    acum_costototal += costototal;
    acum_costopedido += costopedido;
@@ -133,14 +133,16 @@ void informe()
 /* se encarga de calcular la media y desviacion tipica de los valores obtenidos en las diferentes simulaciones */
 {
  
-printf("\n\nValores medios y desviaciones tipicas de las medidas de rendimiento");
-printf("\nNumero de simulaciones = %d",veces);
+// printf("\n\nValores medios y desviaciones tipicas de las medidas de rendimiento");
+// printf("\nNumero de simulaciones = %d",veces);
 
-printf("\ncostototal = %.3f,  %.3f",acum_costototal/veces,sqrt((acum2_costototal-acum_costototal*acum_costototal/veces)/(veces-1)));
-printf("\ncostopedido = %.3f,  %.3f",acum_costopedido/veces,sqrt((acum2_costopedido-acum_costopedido*acum_costopedido/veces)/(veces-1)));
-printf("\ncostomantenimiento = %.3f,  %.3f",acum_costomantenimiento/veces,sqrt((acum2_costomantenimiento-acum_costomantenimiento*acum_costomantenimiento/veces)/(veces-1)));
-printf("\ncostodeficit = %.3f,  %.3f",acum_costodeficit/veces,sqrt((acum2_costodeficit-acum_costodeficit*acum_costodeficit/veces)/(veces-1)));
-printf("\n");
+// printf("\ncostototal = %.3f,  %.3f",acum_costototal/veces,sqrt((acum2_costototal-acum_costototal*acum_costototal/veces)/(veces-1)));
+// printf("\ncostopedido = %.3f,  %.3f",acum_costopedido/veces,sqrt((acum2_costopedido-acum_costopedido*acum_costopedido/veces)/(veces-1)));
+// printf("\ncostomantenimiento = %.3f,  %.3f",acum_costomantenimiento/veces,sqrt((acum2_costomantenimiento-acum_costomantenimiento*acum_costomantenimiento/veces)/(veces-1)));
+// printf("\ncostodeficit = %.3f,  %.3f",acum_costodeficit/veces,sqrt((acum2_costodeficit-acum_costodeficit*acum_costodeficit/veces)/(veces-1)));
+// printf("\n");
+
+printf("%d,%.3f,%.3f,%.3f,%.3f\n", veces, acum_costototal/veces,acum_costopedido/veces,acum_costomantenimiento/veces,acum_costodeficit/veces);
 }
 
 /* generadores de datos */
@@ -194,8 +196,31 @@ int main(int argc, char *argv[])
     veces = atoi(argv[1]);
     spequena = atoi(argv[2]);
     sgrande = atoi(argv[3]);
-    srand(time(NULL));
+    // srand(time(NULL));
    //srand(123456);
+
+    // Cambio de la semilla para cada ejecución del programa
+  unsigned long long int random_value = 0; //Declare value to store data into
+  size_t size = sizeof(random_value); //Declare size of data
+  ifstream urandom("/dev/urandom", ios::in|ios::binary); //Open stream
+  if(urandom) //Check if stream is open
+  {
+      urandom.read(reinterpret_cast<char*>(&random_value), size); //Read from urandom
+      if(urandom) //Check if stream is ok, read succeeded
+      {
+          srandom(random_value);
+      }
+      else //Read failed
+      {
+          srandom(time(NULL));
+      }
+      urandom.close(); //close stream
+  }
+  else //Open failed
+  {
+    srandom(time(NULL));
+  }
+
    for (int j=0; j<veces; j++)
      {
       inicializacion();

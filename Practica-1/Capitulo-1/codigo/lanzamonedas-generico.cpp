@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+#include <fstream>
 // #include <list>
 
 using namespace std;
@@ -63,7 +64,31 @@ int main(int argc, char *argv[])
 	  }
 
 //srandom(123456);
-srandom(time(NULL));
+// srandom(time(NULL));
+
+
+// Cambio de la semilla para cada ejecución del programa
+unsigned long long int random_value = 0; //Declare value to store data into
+size_t size = sizeof(random_value); //Declare size of data
+ifstream urandom("/dev/urandom", ios::in|ios::binary); //Open stream
+if(urandom) //Check if stream is open
+{
+    urandom.read(reinterpret_cast<char*>(&random_value), size); //Read from urandom
+    if(urandom) //Check if stream is ok, read succeeded
+    {
+        srandom(random_value);
+    }
+    else //Read failed
+    {
+        srandom(time(NULL));
+    }
+    urandom.close(); //close stream
+}
+else //Open failed
+{
+  srandom(time(NULL));
+}
+
 esperado=0.0;
 medialanzamientos=0;
 
@@ -93,6 +118,6 @@ medialanzamientos = medialanzamientos/veces;
 // printf("\nBeneficio esperado: %f ",esperado);
 //printf("\n");
 // printf("\nNumero medio de lanzamientos: %f ",medialanzamientos);
-printf("%f, %f", esperado, medialanzamientos);
-printf("\n");
+printf("%d,%f,%d,%f,%f,%f\n", veces, prob, dif, pagoporlanzamiento, pagoalfinalizar, esperado);
+// printf("\n");
 }
