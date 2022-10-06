@@ -121,7 +121,7 @@ void resolver(double _t0, double _tf, double *_res)
 }
 
 // Main: execution (with text interface) of the model's simulation.
-int main()
+int main(int argc, char * argv[])
 {
 	//	cerr << " tinicio => ";
 	//	cin >> _tinicio;
@@ -131,8 +131,9 @@ int main()
 	//	cerr << " tfin => ";
 	//	cin >> _tfin;
 	//	cout << " tfin " << _tfin << endl;
-	cerr << " Duracion de la simulacion => ";
-	cin >> _tfin;
+	// cerr << " Duracion de la simulacion => ";
+	// cin >> _tfin;
+	_tfin = atoi(argv[1]);
 
 	//	cerr << " Incremento de tiempo, inc_t => ";
 	//	cin >> _inc_t;
@@ -152,13 +153,15 @@ int main()
 	//	cout << " tcom " << _tcom << endl;
 	_tcom = 10;
 
-	cerr << " Numero inicial de peces peque�os, x(0) => ";
-	cin >> __x[0];
+	// cerr << " Numero inicial de peces peque�os, x(0) => ";
+	// cin >> __x[0];
 	//	cout << " x(0) "<< __x[0] << endl;
+	__x[0] = atof(argv[2]);
 
-	cerr << " Numero inicial de peces grandes, y(0) => ";
-	cin >> __y[0];
+	// cerr << " Numero inicial de peces grandes, y(0) => ";
+	// cin >> __y[0];
 	//	cout << " y(0) "<< __y[0] << endl;
+	__y[0] = atof(argv[3]);
 
 	/*
 			cerr << " A_inic => ";
