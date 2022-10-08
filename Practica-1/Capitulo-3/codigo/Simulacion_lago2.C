@@ -163,6 +163,15 @@ int main(int argc, char * argv[])
 	//	cout << " y(0) "<< __y[0] << endl;
 	__y[0] = atof(argv[3]);
 
+	double captura, prop_captura;
+	// cerr << " Cantidad de peces a capturar (en proporción) => ";
+	// cin >> captura;
+	captura = atof(argv[4]);
+	captura = 1 - captura;
+
+	int periodo_captura;
+	periodo_captura = atoi(argv[5]);
+
 	/*
 			cerr << " A_inic => ";
 			cin >> __A;
@@ -190,12 +199,21 @@ int main(int argc, char * argv[])
 	*/
 	double inc = _inc_t * _tcom;
 	double *aux = new double[2];
-	cout << "\tt\tx\ty" << endl;
+	cout << "\tt\tx\ty\tpescados" << endl;
 	cout << "\t" << _tinicio << "\t" << __x[0] << "\t" << __y[0] << endl;
+
+	double peces_capturados = 0.0;
 
 	for (double t = _tinicio; t < (_tfin - 10e-8); t += inc)
 	{
+		if(int(t)%periodo_captura == 0){
+			peces_capturados += __y[0] * (1-captura);
+			__y[0] = __y[0] * captura;
+		}
 		resolver(t, t + inc, aux);
-		cout << "\t" << aux[0] << "\t" << aux[1] << "\t" << aux[2] << endl;
+		cout << "\t" << aux[0] << "\t" << aux[1] << "\t" << aux[2] << "\t" << peces_capturados << endl;
+
 	}
+
+
 }

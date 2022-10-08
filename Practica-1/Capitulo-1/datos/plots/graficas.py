@@ -9,7 +9,7 @@ def graficar(data, plot_type, x, y, x_label, y_label, title, archivo_name):
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.savefig(
-        f'/home/adrian/Dev/Simulacion-de-Sistemas/Practica-1/Capitulo-1/plots/{archivo_name}.png', )
+        f'/home/adrian/Dev/Simulacion-de-Sistemas/Practica-1/Capitulo-1/datos/plots/{archivo_name}.png', )
     # plt.show()
 
 
