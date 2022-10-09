@@ -160,7 +160,7 @@ void informe()
   // printf("\ncostodeficit = %.3f,  %.3f",acum_costodeficit/veces,sqrt((acum2_costodeficit-acum_costodeficit*acum_costodeficit/veces)/(veces-1)));
   // printf("\n");
 
-  printf("%d,%.3f,%.3f,%.3f,%.3f\n", veces, acum_costototal / veces, acum_costopedido / veces, acum_costomantenimiento / veces, acum_costodeficit / veces);
+  printf("%d,%d-%d,%.3f,%.3f,%.3f,%.3f\n", veces, spequena, sgrande, acum_costototal / veces, acum_costopedido / veces, acum_costomantenimiento / veces, acum_costodeficit / veces);
 }
 
 /* generadores de datos */

@@ -121,6 +121,8 @@ int main(int argc, char *argv[])
   // printf("\nBeneficio esperado: %f ",esperado);
   // printf("\n");
   // printf("\nNumero medio de lanzamientos: %f ",medialanzamientos);
-  printf("%d,%f,%d,%f,%f,%f\n", veces, prob, dif, pagoporlanzamiento, pagoalfinalizar, esperado);
+  // printf("%d,%f,%d,%f,%f,%f\n", veces, prob, dif, pagoporlanzamiento, pagoalfinalizar, esperado);  
+  printf("%f,%d,%f\n", prob, dif, esperado);
+
   // printf("\n");
 }
