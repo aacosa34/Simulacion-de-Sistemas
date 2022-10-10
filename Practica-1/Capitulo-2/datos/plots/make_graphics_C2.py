@@ -24,16 +24,16 @@ politica3 = pd.read_csv('/home/adrian/Dev/Simulacion-de-Sistemas/Practica-1/Capi
 df_p1 = politica1.groupby(['Veces'])
 
 for vez, tabla in df_p1:
-    graficar(tabla, 'line', 's-S', ['M-CostoTotal', 'M-CostoPedido', 'M-CostoMantenimiento', 'M-CostoDeficit'],
-             'Politica', 'Costo', f'Politica 1 - Veces simuladas: {vez}', f'politica-1/politica1-{vez}veces')
-# Grafica politica 2
+    graficar(tabla, 'bar', 's-S', ['M-CostoTotal', 'M-CostoPedido', 'M-CostoMantenimiento', 'M-CostoDeficit'],
+             'Politica', 'Costo', f'Inventario 1 - Veces simuladas: {vez}', f'inventario-1/inventario1-{vez}veces')
+# Grafica inventario 2
 df_p2 = politica2.groupby(['Veces']).mean()
 
-graficar(df_p2, 'line', None, ['M-CostoTotal', 'M-CostoPedido', 'M-CostoMantenimiento', 'M-CostoDeficit'], 'Veces Simuladas', 'Costo', 'Politica 2', 'politica-2/politica2')
+graficar(df_p2, 'bar', None, ['M-CostoTotal', 'M-CostoPedido', 'M-CostoMantenimiento', 'M-CostoDeficit'], 'Veces Simuladas', 'Costo', 'Inventario 2', 'inventario-2/inventario2')
 
 # Grafica politica 3
 df_p3 = politica3.groupby(['Veces'])
 
 for vez, tabla in df_p3:
-    graficar(tabla, 'line', 's-S', ['M-CostoTotal', 'M-CostoPedido', 'M-CostoMantenimiento', 'M-CostoDeficit'],
-             'Politica', 'Costo', f'Politica 3 - Veces simuladas: {vez}', f'politica-3/politica3-{vez}veces')
+    graficar(tabla, 'bar', 's-S', ['M-CostoTotal', 'M-CostoPedido', 'M-CostoMantenimiento', 'M-CostoDeficit'],
+             'Politica', 'Costo', f'Inventario 3 - Veces simuladas: {vez}', f'inventario-3/inventario3-{vez}veces')
