@@ -157,13 +157,16 @@ La conclusión que podemos sacar a partir de la ejecución del inventario 1 500 
 
 \section{Inventario 2}
 
+De la simulación del inventario 2 hemos obtenido que obtendremos siempre el mismo costo total simulemos las veces que lo simulemos. Si comparamos el costo total que nos sale en el inventario 2 con el del inventario 1 podemos apreciar que la política comentada que era mejor (s=20, S=60) nos proporciona un costo total mucho menor que la política del inventario 2 de pedir lo vendido en el mes anterior.
+
 \begin{center}
 	\includegraphics[width=0.45\textheight]{img/Cap-2/inventario-2/inventario2.png}
 \end{center}
 
-De la simulación del inventario 2 hemos obtenido que 
-
 \section{Inventario 3}
+
+Y para concluir con este estudio, vemos que en el inventario 3 la mejor política sigue siendo la misma que la del inventario 1. Pero comparando ambas gráficas, no podemos concretar cuál de los dos inventarios obtiene un mejor resultado para dicha política, debido a que no tenemos un cambio significativo como para decantarnos por una de los dos inventarios. 
+
 \begin{center}
 	\includegraphics[width=0.4\textheight]{img/Cap-2/inventario-3/inventario3-1veces.png}
 	\includegraphics[width=0.4\textheight]{img/Cap-2/inventario-3/inventario3-5veces.png}
@@ -172,6 +175,8 @@ De la simulación del inventario 2 hemos obtenido que
 	\includegraphics[width=0.45\textheight]{img/Cap-2/inventario-3/inventario3-100veces.png}
 	\includegraphics[width=0.45\textheight]{img/Cap-2/inventario-3/inventario3-500veces.png}
 \end{center}
+
+En resumen, con el inventario 2 obtenemos un costo total bastante mayor que con los inventarios 1 y 3. Para obtener el menor costo total en los inventarios 1 y 3, tendríamos que optar por usar la política con una s igual a 20 y una S igual a 60 ya que los datos nos dicen que es la que obtiene el menor resultado. Y por último, no podemos decantarnos por uno de los dos inventarios entre el 1 y el 3 ya que obtenemos resultados muy similares cuando realizamos la simulación 500 veces, así que escogeríamos la que más nos guste.
 
 \newpage
 \chapter{Mi primer Modelo de Simulación Continuo}
@@ -319,7 +324,7 @@ Por último, vamos a simular qué sucede si planeamos distintas campañas de pes
 	\end{center}
 \end{figure}
 
-Podemos ver que a medida que esperamos más tiempo entre pesca y pesca obtenemos menos peces teniendo en cuenta de el sistema no se desequilibra en ninguno de éstos periodos. Como en el tiempo de simulación, la mayor cantidad es la obtenida es la de la campaña cuatrimestral, obteniendo más de 3 millones de peces acumulados. Sabiendo este dato, vamos a profundizar más y vamos a ver las gráficas con respecto del tiempo de qué es lo que pasa con los peces pequeños, grandes y la comparación entre ambos:
+Podemos ver que a medida que esperamos más tiempo entre pesca y pesca obtenemos menos peces teniendo en cuenta de el sistema no se desequilibra en ninguno de éstos periodos. Para saber qué campaña de pesca es mejor, vamos a limitarnos al tiempo que hemos usado al principio para simular, es decir, de 30000 días. En ese tiempo, la mayor cantidad es la obtenida es la de la campaña cuatrimestral obteniendo más de 3 millones de peces acumulados. Sabiendo este dato, vamos a profundizar más y vamos a ver las gráficas con respecto del tiempo de qué es lo que pasa con los peces pequeños, grandes y la comparación entre ambos:
 
 \begin{figure}[H]
   \begin{subfigure}[b]{0.49\textwidth}
