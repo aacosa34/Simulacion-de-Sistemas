@@ -1,0 +1,270 @@
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.005531 
+Mejor s: 88, Ganancia esperada: 435.700000, Desviacion tipica: 262.711790 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.036974 
+Mejor s: 95, Ganancia esperada: 420.560000, Desviacion tipica: 283.966412 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.069142 
+Mejor s: 85, Ganancia esperada: 404.242000, Desviacion tipica: 271.331475 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.128729 
+Mejor s: 90, Ganancia esperada: 408.038000, Desviacion tipica: 280.133607 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 1.344711 
+Mejor s: 88, Ganancia esperada: 401.974500, Desviacion tipica: 278.519457 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.001321 
+Mejor s: 44, Ganancia esperada: 143.900000, Desviacion tipica: 120.854659 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.012792 
+Mejor s: 48, Ganancia esperada: 129.570000, Desviacion tipica: 151.365209 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.067930 
+Mejor s: 49, Ganancia esperada: 123.542000, Desviacion tipica: 158.586646 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.128513 
+Mejor s: 53, Ganancia esperada: 124.238000, Desviacion tipica: 173.819794 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 1.326408 
+Mejor s: 48, Ganancia esperada: 123.145700, Desviacion tipica: 155.022379 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.001267 
+Mejor s: 30, Ganancia esperada: 24.200000, Desviacion tipica: 73.390887 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.012818 
+Mejor s: 22, Ganancia esperada: 21.750000, Desviacion tipica: 51.984034 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.064772 
+Mejor s: 18, Ganancia esperada: 19.504000, Desviacion tipica: 41.607069 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 0.126830 
+Mejor s: 20, Ganancia esperada: 19.672000, Desviacion tipica: 48.684386 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 1
+Tiempo de ejecucion del modelo: 1.377896 
+Mejor s: 21, Ganancia esperada: 19.071700, Desviacion tipica: 52.576094 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.001600 
+Mejor s: 93, Ganancia esperada: 606.700000, Desviacion tipica: 190.408678 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.015933 
+Mejor s: 91, Ganancia esperada: 575.960000, Desviacion tipica: 223.752147 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.082845 
+Mejor s: 95, Ganancia esperada: 568.832000, Desviacion tipica: 232.754701 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.165041 
+Mejor s: 93, Ganancia esperada: 565.528000, Desviacion tipica: 232.799254 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 1.707805 
+Mejor s: 95, Ganancia esperada: 564.078600, Desviacion tipica: 233.721277 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.001616 
+Mejor s: 89, Ganancia esperada: 266.100000, Desviacion tipica: 190.065884 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.015839 
+Mejor s: 69, Ganancia esperada: 247.620000, Desviacion tipica: 152.965140 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.080897 
+Mejor s: 68, Ganancia esperada: 237.752000, Desviacion tipica: 154.947953 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.168049 
+Mejor s: 73, Ganancia esperada: 233.070000, Desviacion tipica: 175.157253 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 1.594400 
+Mejor s: 71, Ganancia esperada: 232.601900, Desviacion tipica: 170.419772 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.001591 
+Mejor s: 53, Ganancia esperada: 70.000000, Desviacion tipica: 87.697828 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.015819 
+Mejor s: 45, Ganancia esperada: 63.830000, Desviacion tipica: 72.033464 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.079400 
+Mejor s: 46, Ganancia esperada: 58.758000, Desviacion tipica: 81.798580 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 0.158633 
+Mejor s: 48, Ganancia esperada: 58.401000, Desviacion tipica: 87.907781 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 2
+Tiempo de ejecucion del modelo: 1.616983 
+Mejor s: 43, Ganancia esperada: 58.116200, Desviacion tipica: 73.172162 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.001318 
+Mejor s: 93, Ganancia esperada: 458.900000, Desviacion tipica: 215.779981 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.012511 
+Mejor s: 76, Ganancia esperada: 424.140000, Desviacion tipica: 185.373525 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.064208 
+Mejor s: 84, Ganancia esperada: 419.256000, Desviacion tipica: 200.171657 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.139271 
+Mejor s: 81, Ganancia esperada: 414.987000, Desviacion tipica: 194.210292 
+Valor de x: 10
+Valor de y: 1
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 1.296808 
+Mejor s: 79, Ganancia esperada: 415.844000, Desviacion tipica: 194.128804 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.001269 
+Mejor s: 63, Ganancia esperada: 183.000000, Desviacion tipica: 139.580902 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.012563 
+Mejor s: 49, Ganancia esperada: 173.670000, Desviacion tipica: 109.961915 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.062638 
+Mejor s: 50, Ganancia esperada: 167.956000, Desviacion tipica: 117.265563 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.126884 
+Mejor s: 48, Ganancia esperada: 168.161000, Desviacion tipica: 110.659535 
+Valor de x: 10
+Valor de y: 5
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 1.373859 
+Mejor s: 50, Ganancia esperada: 166.603900, Desviacion tipica: 117.758618 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 100
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.001291 
+Mejor s: 38, Ganancia esperada: 52.700000, Desviacion tipica: 63.134536 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 1000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.012822 
+Mejor s: 30, Ganancia esperada: 44.550000, Desviacion tipica: 43.940053 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 5000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.067698 
+Mejor s: 28, Ganancia esperada: 42.256000, Desviacion tipica: 41.352684 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 10000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 0.130633 
+Mejor s: 34, Ganancia esperada: 42.863000, Desviacion tipica: 60.082628 
+Valor de x: 10
+Valor de y: 8
+Numero de veces que se va a realizar cada simulacion: 100000
+Tipo de tabla a utilzar: 3
+Tiempo de ejecucion del modelo: 1.364929 
+Mejor s: 32, Ganancia esperada: 42.429900, Desviacion tipica: 54.673738 
