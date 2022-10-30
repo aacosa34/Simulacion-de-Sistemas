@@ -83,23 +83,21 @@ int genera_demanda(double* tabla,int tama) // Genera un valor de la
 
 int main(int argc, char* argv[]){
 
-    if(argc < 5) {
-        printf("Error en el numero de argumentos. Uso: ./%s <valor de x> <valor de y> <numero de simulaciones> <tipo de tabla a generar> \n", argv[0]);
+    if(argc < 3) {
+        printf("Error en el numero de argumentos. Uso: ./%s <numero de simulaciones> <tipo de tabla a generar> \n", argv[0]);
         return 1;
     }
 
-    int x = atoi(argv[1]);
-    int y = atoi(argv[2]);
-    int veces = atoi(argv[3]);
-    char tipo_tabla = atoi(argv[4]);
+
+    int veces = atoi(argv[1]);
+    char tipo_tabla = atoi(argv[2]);
 
     if(tipo_tabla != 1 && tipo_tabla != 2 && tipo_tabla != 3) {
         printf("Error en el tipo de tabla. Debe ser '1 -> a', '2 -> b' o '3 -> c'.\n");
         return 1;
     }
 
-    printf("Valor de x: %d\n", x);
-    printf("Valor de y: %d\n", y);
+
     printf("Numero de veces que se va a realizar cada simulacion: %d\n", veces);
     printf("Tipo de tabla a utilzar: %d\n", tipo_tabla);
 
@@ -115,37 +113,15 @@ int main(int argc, char* argv[]){
         tablabdemanda = construye_prop_c(100);
     }
 
-    int ganancia, demanda;
-    double gananciaesperada, desviaciont;
-
-    double best_gananciaesperada = 0.0, best_desviaciont = 0.0;
-    int best_s = 0;
+    int demanda;
 
     clock_t inicio = clock();
 
-    for(int s=0; s<100; s++) {
+    for(int s=0; s<veces; s++) {
 
         demanda = genera_demanda(tablabdemanda,100); //Cada vez que se necesite un
-                                                    //valor del generador de demanda
-        
-        double sum=0.0, sum2=0.0;
-        for (int j=0; j<veces; j++) {
-            demanda=genera_demanda(tablabdemanda, 100);
-            if (s>demanda) ganancia=x*demanda-y*s;
-            else ganancia=x*s-y*s;
-            sum+=ganancia;
-            sum2+=ganancia*ganancia;
-        }
-        gananciaesperada=sum/veces;
-        desviaciont=sqrt((sum2-veces*gananciaesperada*gananciaesperada)/(veces-1));
-        // printf("Ganancia esperada: %f, Desviacion tipica: %f \n", gananciaesperada, desviaciont);
-
-        // Calculamos la mejor ganancia esperada y la mejor desviacion tipica
-        if(best_gananciaesperada < gananciaesperada) {
-            best_gananciaesperada = gananciaesperada;
-            best_desviaciont = desviaciont;
-            best_s = s;
-        }
+                                                    //valor del generador de demanda  
+        printf("Demanda: %d \n", demanda);
     }
 
     clock_t fin = clock();
@@ -154,8 +130,6 @@ int main(int argc, char* argv[]){
     double tiempo = (double) (fin - inicio) / CLOCKS_PER_SEC;
 
     printf("Tiempo de ejecucion del modelo: %f \n", tiempo);
-
-    printf("Mejor s: %d, Ganancia esperada: %f, Desviacion tipica: %f \n", best_s, best_gananciaesperada, best_desviaciont);
 
     free(tablabdemanda);
 }
