@@ -23,9 +23,9 @@ double* construye_prop_a(int n) //Construye la tabla de b�squeda de
         fputs("Error reservando memoria para generador uniforme\n",stderr);
         exit(1);
     }
-    temp[n-1] = 1.0/n;
-    for(int i = n-2; i>=0; i--) 
-        temp[i] = temp[i+1] + 1.0/n;
+    temp[0] = 1.0/n;
+    for (i=1;i<n;i++)
+        temp[i] = temp[i-1]+1.0/n;
     return temp;
 }
 
@@ -42,9 +42,9 @@ double* construye_prop_b(int n) //Construye la tabla de b�squeda de
         exit(1);
     }
     max = (n+1)*n/2;
-    temp[n-1] = 1.0/max;
-    for (int i=n-2;i>=0;i--)
-        temp[i] = temp[i+1]+(double)(i+1)/max;
+    temp[0] = 1.0/max;
+    for (i=1;i<n;i++)
+        temp[i] = temp[i-1]+(double)(i+1)/max;
     return temp;  
 }
 
@@ -60,11 +60,11 @@ double* construye_prop_c(int n) //Construye la tabla de b�squeda de
         exit(1);
     }
     max = n*n/4;
-    temp[n-1] = 0.0;
-    for (i=n-2;i>(n/2);i--)
-        temp[i] = temp[i+1]+(double)(n-i)/max;
-    for (i=(n/2);i>=0;i--)
-        temp[i] = temp[i+1]+(double)i/max;
+    temp[0] = 0.0;
+    for (i=1;i<(n/2);i++)
+        temp[i] = temp[i-1]+(double)i/max;
+    for (i=(n/2);i<n;i++)
+        temp[i] = temp[i-1]+(double)(n-i)/max;
     return temp;
 }
 
@@ -75,9 +75,23 @@ int genera_demanda(double* tabla,int tama) // Genera un valor de la
 {
     int i;
     double u = uniforme();
-    i = 0;
-    while((i<tama) && (u<=tabla[i]))
-        i++;
+    int a = 0, b = tama - 1;
+    int encontrado = 0;
+    while(a<=b && !encontrado){
+        i = (a+b)/2;
+        if(u < tabla[i]) {
+            if(i == 0) {
+                encontrado=1;
+            } else if(u >= tabla[i-1]) {
+                encontrado=1;
+            } else {
+                b = i-1;
+            }
+        } else {
+            a = i+1;
+        }
+    }   
+
     return i;
 }
 

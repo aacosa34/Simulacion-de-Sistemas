@@ -23,9 +23,9 @@ double* construye_prop_a(int n) //Construye la tabla de b�squeda de
         fputs("Error reservando memoria para generador uniforme\n",stderr);
         exit(1);
     }
-    temp[n-1] = 1.0/n;
-    for(int i = n-2; i>=0; i--) 
-        temp[i] = temp[i+1] + 1.0/n;
+    temp[0] = 1.0/n;
+    for (i=1;i<n;i++)
+        temp[i] = temp[i-1]+1.0/n;
     return temp;
 }
 
@@ -42,9 +42,9 @@ double* construye_prop_b(int n) //Construye la tabla de b�squeda de
         exit(1);
     }
     max = (n+1)*n/2;
-    temp[n-1] = 1.0/max;
-    for (int i=n-2;i>=0;i--)
-        temp[i] = temp[i+1]+(double)(i+1)/max;
+    temp[0] = 1.0/max;
+    for (i=1;i<n;i++)
+        temp[i] = temp[i-1]+(double)(i+1)/max;
     return temp;  
 }
 
@@ -60,11 +60,11 @@ double* construye_prop_c(int n) //Construye la tabla de b�squeda de
         exit(1);
     }
     max = n*n/4;
-    temp[n-1] = 0.0;
-    for (i=n-2;i>(n/2);i--)
-        temp[i] = temp[i+1]+(double)(n-i)/max;
-    for (i=(n/2);i>=0;i--)
-        temp[i] = temp[i+1]+(double)i/max;
+    temp[0] = 0.0;
+    for (i=1;i<(n/2);i++)
+        temp[i] = temp[i-1]+(double)i/max;
+    for (i=(n/2);i<n;i++)
+        temp[i] = temp[i-1]+(double)(n-i)/max;
     return temp;
 }
 
@@ -76,42 +76,35 @@ int genera_demanda(double* tabla,int tama) // Genera un valor de la
     int i;
     double u = uniforme();
     i = 0;
-    while((i<tama) && (u<=tabla[i]))
+    while((i<tama) && (u>=tabla[i]))
         i++;
+    return i;
+}
+
+int genera_demanda_tconst(){
+    double u = uniforme();
+
+    int i = (int)(u * 100);
+
     return i;
 }
 
 int main(int argc, char* argv[]){
 
-    if(argc < 3) {
-        printf("Error en el numero de argumentos. Uso: ./%s <numero de simulaciones> <tipo de tabla a generar> \n", argv[0]);
+    if(argc < 2) {
+        printf("Error en el numero de argumentos. Uso: ./%s <numero de simulaciones> \n", argv[0]);
         return 1;
     }
-
 
     int veces = atoi(argv[1]);
-    char tipo_tabla = atoi(argv[2]);
-
-    if(tipo_tabla != 1 && tipo_tabla != 2 && tipo_tabla != 3) {
-        printf("Error en el tipo de tabla. Debe ser '1 -> a', '2 -> b' o '3 -> c'.\n");
-        return 1;
-    }
-
 
     printf("Numero de veces que se va a realizar cada simulacion: %d\n", veces);
-    printf("Tipo de tabla a utilzar: %d\n", tipo_tabla);
 
     srand(time(NULL)); //Inicializa el generador de números pseudoaleatorios
     double* tablabdemanda;
 
     //Construye la tabla de búsqueda en funcion del tipo de tabla
-    if(tipo_tabla == 1) {
-        tablabdemanda = construye_prop_a(100);
-    } else if(tipo_tabla == 2) {
-        tablabdemanda = construye_prop_b(100);
-    } else {
-        tablabdemanda = construye_prop_c(100);
-    }
+    tablabdemanda = construye_prop_a(100);
 
     int demanda;
 
@@ -119,8 +112,8 @@ int main(int argc, char* argv[]){
 
     for(int s=0; s<veces; s++) {
 
-        demanda = genera_demanda(tablabdemanda,100); //Cada vez que se necesite un
-                                                    //valor del generador de demanda  
+        demanda = genera_demanda_tconst(); //Cada vez que se necesite un
+                                            //valor del generador de demanda  
         printf("Demanda: %d \n", demanda);
     }
 
