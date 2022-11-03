@@ -107,12 +107,6 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-    printf("Valor de x: %d\n", x);
-    printf("Valor de y: %d\n", y);
-    printf("Valor de z: %d\n", z);
-    printf("Numero de veces que se va a realizar cada simulacion: %d\n", veces);
-    printf("Tipo de tabla a utilzar: %d\n", tipo_tabla);
-
     srand(time(NULL)); //Inicializa el generador de números pseudoaleatorios
     double* tablabdemanda;
 
@@ -166,9 +160,7 @@ int main(int argc, char* argv[]){
     // Cálculo del tiempo de ejecución
     double tiempo = (double) (fin - inicio) / CLOCKS_PER_SEC;
 
-    printf("Tiempo de ejecucion del modelo: %f \n", tiempo);
-
-    printf("Mejor s: %d, Ganancia esperada: %f, Desviacion tipica: %f \n", best_s, best_gananciaesperada, best_desviaciont);
+    printf("%d;%d;%d;%d;%d;%f;%f\n", x, y, z, veces, best_s, best_gananciaesperada, tiempo);
 
     free(tablabdemanda);
 }

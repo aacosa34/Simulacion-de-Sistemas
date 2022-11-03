@@ -1,0 +1,268 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[spanish,es-nodecimaldot]{babel}	% Utilizar español
+\usepackage[utf8]{inputenc}					% Caracteres UTF-8
+\usepackage{graphicx}						% Imagenes
+\usepackage[hidelinks]{hyperref}			% Poner enlaces sin marcarlos en rojo
+\usepackage{fancyhdr}						% Modificar encabezados y pies de pagina
+\usepackage{float}							% Insertar figuras
+\usepackage[textwidth=390pt]{geometry}		% Anchura de la pagina
+\usepackage[nottoc]{tocbibind}				% Referencias (no incluir num pagina indice en Indice)
+\usepackage{enumitem}						% Permitir enumerate con distintos simbolos
+\usepackage[T1]{fontenc}					% Usar textsc en sections
+\usepackage{amsmath}						% Símbolos matemáticos
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{subcaption}
+\usepackage{datatool}
+\usepackage{filecontents}
+
+
+% Comando para poner el nombre de la asignatura
+\newcommand{\asignatura}{Simulación de Sistemas}
+\newcommand{\autor}{Adrián Acosa Sánchez}
+\newcommand{\titulo}{PRÁCTICA 2}
+\newcommand{\subtitulo}{Modelos de Monte Carlo. Generadores de datos}
+\newcommand{\rama}{Computación y Sistemas Inteligentes}
+
+% Configuracion de encabezados y pies de pagina
+\pagestyle{fancy}
+\lhead{\autor{}}
+\rhead{\asignatura{}}
+\lfoot{Grado en Ingeniería Informática}
+\cfoot{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}		% Linea cabeza de pagina
+\renewcommand{\footrulewidth}{0.4pt}		% Linea pie de pagina
+
+\begin{document}
+\pagenumbering{gobble}
+
+% Pagina de titulo
+\begin{titlepage}
+
+\begin{minipage}{\textwidth}
+
+\centering
+
+%\includegraphics[scale=0.5]{img/ugr.png}\\
+\includegraphics[scale=0.3]{img/logo_ugr.jpg}\\[1cm]
+
+\textsc{\Large \asignatura{}\\[0.2cm]}
+\textsc{GRADO EN INGENIERÍA INFORMÁTICA}\\[1cm]
+
+\noindent\rule[-1ex]{\textwidth}{1pt}\\[1.5ex]
+\textsc{{\Huge \titulo\\[0.5ex]}}
+\textsc{{\Large \subtitulo\\}}
+\noindent\rule[-1ex]{\textwidth}{2pt}\\[3.5ex]
+
+\end{minipage}
+
+%\vspace{0.5cm}
+\vspace{0.7cm}
+
+\begin{minipage}{\textwidth}
+
+\centering
+
+\textbf{Autor}\\ {\autor{}}\\[2.5ex]
+\textbf{Rama}\\ {\rama}\\[2.5ex]
+\vspace{0.3cm}
+
+\includegraphics[scale=0.3]{img/etsiit.jpeg}
+
+\vspace{0.7cm}
+\textsc{Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación}\\
+\vspace{1cm}
+\textsc{Curso 2022-2023}
+\end{minipage}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\tableofcontents
+\thispagestyle{empty}				% No usar estilo en la pagina de indice
+
+\newpage
+
+\setlength{\parskip}{1em}
+
+\chapter{Mi Segundo Modelo de Simulación de Monte Carlo}
+\newpage
+\section{Modelización del modelo por Monte Carlo}
+
+Una vez que tenemos el problema modelado por Monte Carlo es momento de ver qué tan bueno es éste haciendole pruebas sobre cómo se comporta para distintas combinaciones de \textit{x} e \textit{y} y comparándolas con la expresión analítica del problema que viene en el guión.
+
+Las combinaciones de \textit{x} e \textit{y} que usaré para ello serán:
+
+\begin{itemize}
+	\item \textit{x} = 10 / \textit{y} = 1
+	\item \textit{x} = 10 / \textit{y} = 5
+	\item \textit{x} = 10 / \textit{y} = 8
+	\item \textit{x} = 15 / \textit{y} = 10
+\end{itemize}
+
+Cada una de las combinaciones serán simuladas con números de veces 100, 1000, 5000, 10000 y 100000 veces para ver si cambian los resultados en función de las veces simuladas. También hay que probar cada una de las distribuciones que se menciona en el guión.
+
+Para el primer tipo de distribución obtenemos los siguientes resultados:
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 1 & 100 & 87 & 452.600000 & 0.001296 \\ 
+        10 & 1 & 1000 & 96 & 416.030000 & 0.013941 \\ 
+        10 & 1 & 5000 & 89 & 404.830000 & 0.062063 \\
+        10 & 1 & 10000 & 93 & 405.324000 & 0.125970 \\ 
+        10 & 1 & 100000 & 90 & 401.903400 & 1.241647 \\ \hline
+        10 & 5 & 100 & 60 & 152.100000 & 0.001286 \\ 
+        10 & 5 & 1000 & 54 & 132.020000 & 0.012689 \\ 
+        10 & 5 & 5000 & 50 & 124.414000 & 0.063354 \\ 
+        10 & 5 & 10000 & 54 & 123.520000 & 0.127698 \\ 
+        10 & 5 & 100000 & 48 & 123.101100 & 1.254433 \\ \hline
+        10 & 8 & 100 & 30 & 29.500000 & 0.001276 \\ 
+        10 & 8 & 1000 & 20 & 21.380000 & 0.012423 \\ 
+        10 & 8 & 5000 & 16 & 19.664000 & 0.064112 \\ 
+        10 & 8 & 10000 & 22 & 20.024000 & 0.127483 \\ 
+        10 & 8 & 100000 & 20 & 19.091300 & 1.260559 \\ \hline
+        15 & 10 & 100 & 34 & 119.300000 & 0.001311 \\ 
+        15 & 10 & 1000 & 35 & 88.825000 & 0.012580 \\ 
+        15 & 10 & 5000 & 35 & 81.895000 & 0.063079 \\ 
+        15 & 10 & 10000 & 34 & 82.023500 & 0.135397 \\ 
+        15 & 10 & 100000 & 34 & 81.319700 & 1.256663 \\ \hline	
+\end{tabular}
+}%
+\caption{Resultados de ejecutar el modelo de Monte Carlo con distribución uniforme.}
+\label{tabla1}
+\end{table}
+
+Para poder realizar correctamente el estudio de si ha sido buena modelización o no, primero debemos conocer el valor óptimo de $s$ para los diferentes casos. Para ello usaré la expresión que aparece en el guión de prácticas:
+
+\begin{itemize}
+	\item{Para $x$ = 10 e $y$ = 1, $s^*$ = 89.5}
+	\item{Para $x$ = 10 e $y$ = 5, $s^*$ = 49.5}
+	\item{Para $x$ = 10 e $y$ = 8, $s^*$ = 19.5}
+	\item{Para $x$ = 15 e $y$ = 10, $s^*$ = 32.83}
+\end{itemize}
+
+Se puede observar cómo los valores obtenidos por la simulación de Monte Carlo son bastante cercanos al valor óptimo del modelo. Los valores obtenidos cuando simulamos con bajas repeticiones varían mucho el resultado con respecto al valor óptimo. Sin embargo, a medida que repetimos el proceso con un número de veces mucho mayor, nos acercamos más a este valor óptimo debido a que por mucho que estemos usando valores aleatorios, de media siempre obtendremos mejores resultados cuanto mayor sea el número de la muestra.
+
+Podemos concluir que el modelo es bastante preciso para representar el modelo siempre y cuando usemos un número de ejecuciones altas.
+
+Ahora vamos a ver cómo se comporta el modelo cuando usamos una distribución proporcional:
+
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+		10 & 1 & 100 & 85 & 590.700000 & 0.001600 \\ 
+        10 & 1 & 1000 & 96 & 573.800000 & 0.015891 \\ 
+        10 & 1 & 5000 & 97 & 567.134000 & 0.079397 \\ 
+        10 & 1 & 10000 & 94 & 566.568000 & 0.157738 \\ 
+        10 & 1 & 100000 & 93 & 564.064400 & 1.566322 \\ \hline
+        10 & 5 & 100 & 74 & 275.800000 & 0.001523 \\ 
+        10 & 5 & 1000 & 71 & 248.740000 & 0.015133 \\ 
+        10 & 5 & 5000 & 69 & 236.150000 & 0.078578 \\ 
+        10 & 5 & 10000 & 70 & 233.457000 & 0.154835 \\ 
+        10 & 5 & 100000 & 70 & 232.022300 & 1.566630 \\ \hline
+        10 & 8 & 100 & 59 & 79.400000 & 0.001511 \\ 
+        10 & 8 & 1000 & 44 & 61.970000 & 0.015133 \\ 
+        10 & 8 & 5000 & 46 & 59.062000 & 0.076884 \\ 
+        10 & 8 & 10000 & 43 & 58.036000 & 0.154246 \\ 
+        10 & 8 & 100000 & 46 & 58.102200 & 1.541667 \\ \hline
+        15 & 10 & 100 & 54 & 213.000000 & 0.001563 \\ 
+        15 & 10 & 1000 & 55 & 195.515000 & 0.015857 \\ 
+        15 & 10 & 5000 & 60 & 191.262000 & 0.077931 \\ 
+        15 & 10 & 10000 & 58 & 189.306500 & 0.154304 \\ 
+        15 & 10 & 100000 & 58 & 189.472250 & 1.533207 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar el modelo de Monte Carlo con distribución proporcional creciente.}
+\label{tabla2}
+\end{table}
+
+En éste caso nos pasa igual que en el primero. Si nos fijamos podemos observar cómo cuando usamos un número de repeticiones muy bajos, los valores obtenidos varían mucho y a medida que nos vamos acercando a números de repeticiones mucho más altos obtenemos menos variación en los resultados. Como no tenemos una expresión analítica que nos calcule el valor óptimo de $s$, concluiremos que el modelo obtiene unos valores muy cercanos al óptimo cuando usamos el número de repeticiones más alta para cada caso.
+
+Una diferencia observable a simple vista entre ésta distribución y la de la tabla 1.1 es que las entradas de la columna "Mejor s" son mucho más altas aquí. Ésto se debe a que la distribución proporcional es creciente y ésto provoca que se den como mejores resultados aquellas demandas que sean más altas ya que tienen más probabilidad de salir. En cuanto al tiempo de ejecución la diferencia es mínima y no es muy relevante.
+
+
+Y por último vamos a ver la simulación mediante una distribución "triangular":
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 1 & 100 & 69 & 441.200000 & 0.001238 \\ 
+        10 & 1 & 1000 & 78 & 421.850000 & 0.012166 \\ 
+        10 & 1 & 5000 & 78 & 416.576000 & 0.061793 \\ 
+        10 & 1 & 10000 & 74 & 417.297000 & 0.123098 \\ 
+        10 & 1 & 100000 & 78 & 415.443100 & 1.222110 \\ \hline
+        10 & 5 & 100 & 52 & 192.500000 & 0.001265 \\ 
+        10 & 5 & 1000 & 53 & 169.810000 & 0.012635 \\ 
+        10 & 5 & 5000 & 50 & 169.358000 & 0.066643 \\ 
+        10 & 5 & 10000 & 52 & 168.650000 & 0.132698 \\ 
+        10 & 5 & 100000 & 48 & 166.742900 & 1.261132 \\ \hline
+        10 & 8 & 100 & 41 & 47.900000 & 0.001276 \\ 
+        10 & 8 & 1000 & 37 & 43.730000 & 0.012694 \\ 
+        10 & 8 & 5000 & 30 & 42.630000 & 0.062987 \\ 
+        10 & 8 & 10000 & 33 & 42.908000 & 0.125408 \\ 
+        10 & 8 & 100000 & 33 & 42.368300 & 1.226529 \\ \hline
+        15 & 10 & 100 & 44 & 155.200000 & 0.001270 \\ 
+        15 & 10 & 1000 & 38 & 137.320000 & 0.012593 \\ 
+        15 & 10 & 5000 & 38 & 137.305000 & 0.063753 \\ 
+        15 & 10 & 10000 & 41 & 137.159500 & 0.125660 \\ 
+        15 & 10 & 100000 & 41 & 136.963300 & 1.233677 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar el modelo de Monte Carlo con distribución "triangular".}
+\label{tabla3}
+\end{table}
+
+En éste último caso podemos ver que salen muchos valores rondando 50. Ésta distribución "triangular" lo que provoca es que sean más probables los valores medios que los valores altos o bajos. Aquí se ve reflejado en que en la primera simulación vemos como en las tablas 1.1 y 1.2 salían valores mucho más altos y ahora han salido unos valores más bajo. Ésto es porque, como acabo de mencionar, los valores altos de demanda se ven penalizados por ésta distribución ya que tienen menor probabilidad que los valores que se encuentran en mitad de la tabla.
+
+Como conclusión podemos decir que éstos modelos se acercan muy bien a la realidad en el caso de que los ejecutemos un número de veces relativamente alto, para así ser más precisos con la estimación (como hemos podido comprobar empíricamente en el caso de la tabla 1.1).
+
+\newpage
+
+\section{Modificaciones del modelo}
+\subsection{Primera modificación}
+
+Ahora se da la opción al establecimiento de poder devolver las unidades no vendidas pero que haya que pagar una cantidad fija ($z$) como gastos de devolución, siendo esta cantidad independiente del número de unidades que se devuelvan.
+
+Para ésta primera modificación he consid
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Coste\\ por\\ devolución\\ (z)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 1 & 100 & 69 & 441.200000 & 0.001238 \\ 
+        10 & 1 & 1000 & 78 & 421.850000 & 0.012166 \\ 
+        10 & 1 & 5000 & 78 & 416.576000 & 0.061793 \\ 
+        10 & 1 & 10000 & 74 & 417.297000 & 0.123098 \\ 
+        10 & 1 & 100000 & 78 & 415.443100 & 1.222110 \\ \hline
+        10 & 5 & 100 & 52 & 192.500000 & 0.001265 \\ 
+        10 & 5 & 1000 & 53 & 169.810000 & 0.012635 \\ 
+        10 & 5 & 5000 & 50 & 169.358000 & 0.066643 \\ 
+        10 & 5 & 10000 & 52 & 168.650000 & 0.132698 \\ 
+        10 & 5 & 100000 & 48 & 166.742900 & 1.261132 \\ \hline
+        10 & 8 & 100 & 41 & 47.900000 & 0.001276 \\ 
+        10 & 8 & 1000 & 37 & 43.730000 & 0.012694 \\ 
+        10 & 8 & 5000 & 30 & 42.630000 & 0.062987 \\ 
+        10 & 8 & 10000 & 33 & 42.908000 & 0.125408 \\ 
+        10 & 8 & 100000 & 33 & 42.368300 & 1.226529 \\ \hline
+        15 & 10 & 100 & 44 & 155.200000 & 0.001270 \\ 
+        15 & 10 & 1000 & 38 & 137.320000 & 0.012593 \\ 
+        15 & 10 & 5000 & 38 & 137.305000 & 0.063753 \\ 
+        15 & 10 & 10000 & 41 & 137.159500 & 0.125660 \\ 
+        15 & 10 & 100000 & 41 & 136.963300 & 1.233677 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar el modelo de Monte Carlo con distribución "triangular".}
+\label{tabla3}
+\end{table}
+
+\end{document}
+
