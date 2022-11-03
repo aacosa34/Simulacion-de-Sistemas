@@ -97,10 +97,6 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-
-    printf("Numero de veces que se va a realizar cada simulacion: %d\n", veces);
-    printf("Tipo de tabla a utilzar: %d\n", tipo_tabla);
-
     srand(time(NULL)); //Inicializa el generador de números pseudoaleatorios
     double* tablabdemanda;
 
@@ -121,7 +117,6 @@ int main(int argc, char* argv[]){
 
         demanda = genera_demanda(tablabdemanda,100); //Cada vez que se necesite un
                                                     //valor del generador de demanda  
-        printf("Demanda: %d \n", demanda);
     }
 
     clock_t fin = clock();
@@ -129,7 +124,7 @@ int main(int argc, char* argv[]){
     // Cálculo del tiempo de ejecución
     double tiempo = (double) (fin - inicio) / CLOCKS_PER_SEC;
 
-    printf("Tiempo de ejecucion del modelo: %f \n", tiempo);
+    printf("\t%f\n", tiempo);
 
     free(tablabdemanda);
 }

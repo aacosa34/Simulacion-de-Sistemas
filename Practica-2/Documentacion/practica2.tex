@@ -231,38 +231,174 @@ Como conclusión podemos decir que éstos modelos se acercan muy bien a la reali
 
 Ahora se da la opción al establecimiento de poder devolver las unidades no vendidas pero que haya que pagar una cantidad fija ($z$) como gastos de devolución, siendo esta cantidad independiente del número de unidades que se devuelvan.
 
-Para ésta primera modificación he consid
+Para ésta primera modificación he hecho pruebas con los siguientes datos ejecutándolos 10000 y 100000 veces cada una:
+
+\begin{itemize}
+	\item{$x = 10$ / $z = 1$}
+	\item{$x = 10$ / $z = 5$}
+	\item{$x = 10$ / $z = 10$}
+	\item{$x = 10$ / $z = 100$}
+\end{itemize}
+
+Y con estos datos he obtenido los siguientes resultados para cada una de las distribuciones:
 
 \begin{table}[H]
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
 \textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Coste\\ por\\ devolución\\ (z)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
-        10 & 1 & 100 & 69 & 441.200000 & 0.001238 \\ 
-        10 & 1 & 1000 & 78 & 421.850000 & 0.012166 \\ 
-        10 & 1 & 5000 & 78 & 416.576000 & 0.061793 \\ 
-        10 & 1 & 10000 & 74 & 417.297000 & 0.123098 \\ 
-        10 & 1 & 100000 & 78 & 415.443100 & 1.222110 \\ \hline
-        10 & 5 & 100 & 52 & 192.500000 & 0.001265 \\ 
-        10 & 5 & 1000 & 53 & 169.810000 & 0.012635 \\ 
-        10 & 5 & 5000 & 50 & 169.358000 & 0.066643 \\ 
-        10 & 5 & 10000 & 52 & 168.650000 & 0.132698 \\ 
-        10 & 5 & 100000 & 48 & 166.742900 & 1.261132 \\ \hline
-        10 & 8 & 100 & 41 & 47.900000 & 0.001276 \\ 
-        10 & 8 & 1000 & 37 & 43.730000 & 0.012694 \\ 
-        10 & 8 & 5000 & 30 & 42.630000 & 0.062987 \\ 
-        10 & 8 & 10000 & 33 & 42.908000 & 0.125408 \\ 
-        10 & 8 & 100000 & 33 & 42.368300 & 1.226529 \\ \hline
-        15 & 10 & 100 & 44 & 155.200000 & 0.001270 \\ 
-        15 & 10 & 1000 & 38 & 137.320000 & 0.012593 \\ 
-        15 & 10 & 5000 & 38 & 137.305000 & 0.063753 \\ 
-        15 & 10 & 10000 & 41 & 137.159500 & 0.125660 \\ 
-        15 & 10 & 100000 & 41 & 136.963300 & 1.233677 \\ \hline
+        10 & 0 & 1 & 10000 & 97 & 499.369900 & 0.123301 \\ 
+        10 & 0 & 1 & 100000 & 97 & 495.345140 & 1.280890 \\ \hline
+        10 & 0 & 5 & 10000 & 99 & 493.390000 & 0.128021 \\ 
+        10 & 0 & 5 & 100000 & 99 & 490.786500 & 1.254347 \\ \hline
+        10 & 0 & 10 & 10000 & 98 & 488.275000 & 0.125137 \\ 
+        10 & 0 & 10 & 100000 & 96 & 485.424300 & 1.253742 \\ \hline
+        10 & 0 & 100 & 10000 & 91 & 412.304000 & 0.123278 \\ 
+        10 & 0 & 100 & 100000 & 87 & 400.858700 & 1.243047 \\ \hline
 \end{tabular}
 }%
-\caption{Resultados de ejecutar el modelo de Monte Carlo con distribución "triangular".}
-\label{tabla3}
+\caption{Resultados de ejecutar la primera modificación del modelo con distribución uniforme.}
+\label{tabla4}
 \end{table}
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Coste\\ por\\ devolución\\ (z)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 0 & 1 & 10000 & 99 & 661.257400 & 0.151678 \\ 
+        10 & 0 & 1 & 100000 & 99 & 659.731950 & 1.593401 \\ \hline
+        10 & 0 & 5 & 10000 & 95 & 656.408500 & 0.162619 \\ 
+        10 & 0 & 5 & 100000 & 98 & 655.351650 & 1.638641 \\ \hline
+        10 & 0 & 10 & 10000 & 97 & 651.690000 & 0.152098 \\ 
+        10 & 0 & 10 & 100000 & 95 & 650.302700 & 1.586894 \\ \hline
+        10 & 0 & 100 & 10000 & 88 & 572.008000 & 0.154631 \\ 
+        10 & 0 & 100 & 100000 & 89 & 570.320000 & 1.574889 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar la primera modificación del modelo con distribución proporcional creciente.}
+\label{tabla5}
+\end{table}
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Coste\\ por\\ devolución\\ (z)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 0 & 1 & 10000 & 98 & 502.639000 & 0.121352 \\
+        10 & 0 & 1 & 100000 & 96 & 499.394580 & 1.228234 \\ \hline
+        10 & 0 & 5 & 10000 & 84 & 498.231000 & 0.122613 \\ 
+        10 & 0 & 5 & 100000 & 93 & 496.194550 & 1.275088 \\ \hline
+        10 & 0 & 10 & 10000 & 97 & 492.063000 & 0.127478 \\ 
+        10 & 0 & 10 & 100000 & 96 & 491.285000 & 1.291043 \\ \hline
+        10 & 0 & 100 & 10000 & 82 & 406.606000 & 0.125063 \\ 
+        10 & 0 & 100 & 100000 & 80 & 404.619600 & 1.307969 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar la primera modificación del modelo con distribución "triangular".}
+\label{tabla6}
+\end{table}
+
+En el caso de esta modificación, no tenemos que tener en cuenta la pérdida por unidad no vendida ya que siempre será peor pagar por las que no se vendan en el caso de que podamos pagar una cantidad fija por devolverlas. Independientemente de la distribución utilizada, vemos como los resultados son muy similares para las tres.
+
+Se puede apreciar que realizando esta modificación la demanda crece muchísimo, ya que pedir más unidades de las que vendemos incluso en el caso de que el coste por devolución sea de 100, merece la pena pagar esa cantidad que pagar por cada unidad no vendida en caso de que se queden bastantes sin vender.
+
+\newpage
+
+\subsection{Segunda modificación}
+
+En este caso la modificación consiste en que la devolución sigue siendo a costo pero dando a elegir entre la opción de asumir los costes de las unidades no vendidas si es un número pequeño de unidades y la opción de pagar los gastos de devolución si son grandes y le merece más la pena que pagar por cada unidad no vendida.
+
+Aplicando el mismo procedimiento que antes, he simulado 10000 y 100000 veces las tres distribuciones con $z = 200$ y con los siguientes datos: 
+
+\begin{itemize}
+	\item{$x = 10$ / $y = 5$}
+	\item{$x = 10$ / $y = 10$}
+	\item{$x = 20$ / $y = 5$}
+	\item{$x = 20$ / $y = 10$}
+\end{itemize}
+
+Los resultados de ésta simulación son los siguientes para las tres distribuciones:
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Coste\\ por\\ devolución\\ (z)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 5 & 200 & 10000 & 82 & 359.795000 & 0.122845 \\ 
+        10 & 5 & 200 & 100000 & 79 & 356.288550 & 1.247951 \\ \hline
+        10 & 10 & 200 & 10000 & 79 & 342.371000 & 0.127144 \\ 
+        10 & 10 & 200 & 100000 & 81 & 336.210000 & 1.265307 \\ \hline
+        25 & 5 & 200 & 10000 & 91 & 1094.779000 & 0.126661 \\ 
+        25 & 5 & 200 & 100000 & 87 & 1086.849500 & 1.275876 \\ \hline
+        25 & 10 & 200 & 10000 & 87 & 1075.621000 & 0.126274 \\ 
+        25 & 10 & 200 & 100000 & 91 & 1070.513500 & 1.324787 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar la segunda modificación del modelo con distribución uniforme.}
+\label{tabla7}
+\end{table}
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Coste\\ por\\ devolución\\ (z)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 5 & 200 & 10000 & 85 & 558.283000 & 0.156210 \\ 
+        10 & 5 & 200 & 100000 & 87 & 552.674400 & 1.604674 \\ \hline
+        10 & 10 & 200 & 10000 & 77 & 526.622000 & 0.154310 \\ 
+        10 & 10 & 200 & 100000 & 81 & 525.970800 & 1.518530 \\ \hline
+        25 & 5 & 200 & 10000 & 96 & 1531.620500 & 0.151326 \\ 
+        25 & 5 & 200 & 100000 & 94 & 1531.736700 & 1.527295 \\ \hline
+        25 & 10 & 200 & 10000 & 93 & 1515.604000 & 0.152044 \\ 
+        25 & 10 & 200 & 100000 & 93 & 1503.659450 & 1.526752 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar la segunda modificación del modelo con distribución proporcional creciente.}
+\label{tabla8}
+\end{table}
+
+\begin{table}[H]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Ganancia por\\ venta (x)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Pérdida por\\ unidad no vendida\\ (y)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Coste\\ por\\ devolución\\ (z)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Veces \\ ejecutadas\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor $s$\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Mejor\\ ganancia\\ media\end{tabular}} & \textbf{Tiempo (en seg.)} \\ \hline
+        10 & 5 & 200 & 10000 & 60 & 391.133000 & 0.122836 \\ 
+        10 & 5 & 200 & 100000 & 61 & 389.268250 & 1.259295 \\ \hline
+        10 & 10 & 200 & 10000 & 61 & 363.009000 & 0.128892 \\ 
+        10 & 10 & 200 & 100000 & 59 & 358.476200 & 1.277941 \\ \hline
+        25 & 5 & 200 & 10000 & 75 & 1117.495000 & 0.139728 \\ 
+        25 & 5 & 200 & 100000 & 73 & 1111.467550 & 1.286411 \\ \hline
+        25 & 10 & 200 & 10000 & 80 & 1086.311000 & 0.127489 \\ 
+        25 & 10 & 200 & 100000 & 77 & 1076.797550 & 1.290287 \\ \hline
+\end{tabular}
+}%
+\caption{Resultados de ejecutar la segunda modificación del modelo con distribución "triangular".}
+\label{tabla9}
+\end{table}
+
+En este caso he aumentado el coste por devolución para que sea un caso más exigente a la hora de elegir qué hacer con las unidades no vendidas. 
+
+Para el caso de la distibución uniforme se piden muchas más unidades en comparación con las otras dos pero la ganancia media obtenida es menor. En la distribución triangular se piden bastantes menos unidades que en las otras dos (debido a que tienen más probabilidad los valores intermedios) y sin embargo se le saca bastante ganancia teniendo en cuenta las unidades solicitadas. Pero la distribución que más beneficio medio tiene es la distribución proporcional creciente debido a que hay más probabilidad para las demandas más altas, por lo que como podemos observar, obtenemos una mayor demanda que en el resto de las tablas y aún así se consigue un mayor beneficio.
+
+La conclusión final de ésta modificación es que es mucho más rentable en esta situación que en el resto el arriesgarse a pedir muchas más unidades (como podemos ver con la distribución proporcional creciente) ya que la pérdida que vayamos a obtener puede minimizarse en función del menor valor entre $z$ y pagar por cada una de las unidades no vendidas una cierta cantidad.
+
+\newpage
+
+\chapter{Generadores de datos}
+\newpage
+\section{Mejorando los generadores}
+En este apartado se pide que se realicen tres mejoras sobre los generadores de datos dados para la práctica. Las mejoras propuestas son las siguientes:
+\begin{enumerate}
+	\item{Ordenarlos valores de la variable en orden decreciente de probabilidad antes de construir la tabla de búsqueda.}
+	\item{Implementar una busqueda binaria para buscar en la tabla.}
+	\item{Para el generador (a), deducir un método para el que su tiempo de ejecución sea constante.}
+\end{enumerate}
+
+Vamos con la primera mejora.
+
+\subsection{Reordenación de valores}
+Vamos a comparar con el generador base cuánto tiempo se mejora.
 
 \end{document}
 
