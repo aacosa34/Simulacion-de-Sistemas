@@ -34,6 +34,7 @@
 \renewcommand{\headrulewidth}{0.4pt}		% Linea cabeza de pagina
 \renewcommand{\footrulewidth}{0.4pt}		% Linea pie de pagina
 
+\usepackage{graphicx}
 \begin{document}
 \pagenumbering{gobble}
 
@@ -395,10 +396,81 @@ En este apartado se pide que se realicen tres mejoras sobre los generadores de d
 	\item{Para el generador (a), deducir un método para el que su tiempo de ejecución sea constante.}
 \end{enumerate}
 
-Vamos con la primera mejora.
+Para las comparaciones usaré la distribución "triangular" que es la que da tiempos de ejecución más altos. Sin más preámbulos, vamos con la primera mejora.
 
+\newpage
 \subsection{Reordenación de valores}
 Vamos a comparar con el generador base cuánto tiempo se mejora.
+
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{img/base-vs-m1.png}
+\caption{Generador base vs. la primera mejora}
+\label{mejora1}
+\end{figure}
+
+Podemos apreciar en la imagen como se consigue una pequeña mejora únicamente reordenando el vector para que las probabilidades más altas esten al principio. Aún así, se sigue teniendo el problema de que la búsqueda en el vector es lineal como se puede apreciar, y por lo tanto, en el peor caso posible, tendríamos que buscar en las últimas casillas del vector hasta encontrar el valor con la probabilidad baja.
+
+\newpage
+\subsection{Búsqueda binaria}
+
+En esta mejora se pide que cuando tengamos que generar la demanda, los valores en vez de ser encontrados mediante una búsqueda lineal, los buscaremos mediante una búsqueda binaria que es mucho mejor. Por lo tanto vamos a compararlo con el generador base también y con el generador de la mejora 1 para comprobar si mejoramos o empeoramos con respecto a ésta última:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{img/base-vs-m1-vs-m2.png}
+\caption{Generador base vs. mejora 1 vs. mejora 2}
+\label{mejora2}
+\end{figure}
+
+En ésta mejora, como era de esperar, obtenemos una mejora muy buena con respecto al generador base y a la primera mejora. Esto es debido a que la búsqueda de los valores en éste caso es mucho más eficiente, y por tanto tarda muchísimo menos tiempo (Estamos hablando que hemos mejorado la eficiencia de $\mathcal{O}(n)$ a $\mathcal{O}(\log n)$).
+
+\newpage
+\subsection{Tiempo de ejecución constante}
+
+Para poder deducir el método de que la tabla (a) nos de un tiempo de ejecución constante a la hora de generar números hay que pensar en que el valor que devuelve el generador es siempre un valor decimal que luego buscamos en nuestra tabla de probabilidades para que se devuelva el índice. Si nos fijamos en los índices que nos devuelven, tienen mucho parecido al número que estamos buscando dentro del array, y es que podemos obtener el índice directamente si multiplicamos la probabilidad por 100 y nos quedamos con la parte entera. Así podríamos mejorar la eficiencia a un orden de $\mathcal{O}(1)$, ya que simplemente tendríamos que hacer una multiplicación al número generado para poder obtener el índice que ocupa en el array.
+
+Implementando esta mejora en nuestro modelo y comparado con todas las mejoras y el generador base obtenemos los siguientes resultados (recordando que todos se ejecuten con la tabla (a)):
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{img/base-vs-m1-vs-m2-vs-m3.png}
+\caption{Comparación de todas las mejoras y el generador base}
+\label{mejora3}
+\end{figure}
+
+\newpage
+Y como era de esperar, el generador con la mejora 3 es muchísimo mejor que el generador con la búsqueda lineal de los valores. 
+
+\section{Generador congruencial lineal multiplicativo}
+
+En este apartado se pide que se implemente el generador congruencial lineal multiplicativo que se indica a continuación
+
+\begin{equation}
+ x_{n+1} = (1013x_n) \mod m 
+\end{equation}
+
+siendo $m=2^{12}$ con diferentes implementaciones:
+
+\begin{itemize}
+	\item{Aritmética entera}
+	\item{Aritmética real ``artesanal''}
+	\item{Aritmética real ``artesanal'' corregida}
+	\item{Aritmética real con \textit{fmod}}
+\end{itemize}
+
+Vamos a ver qué periodos nos da cada una de las implementaciones:
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+	\textbf{Semilla} & \textbf{\begin{tabular}[c]{@{}c@{}}Aritmética\\ entera\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Aritmética\\real\\``artesanal'' \end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Aritmética\\real\\``artesanal'' \\corregida\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Aritmética\\real\\con \textit{fmod} \end{tabular}}\\ \hline
+	1 & 1024 & 1024 & 1024 & 1024\\ \hline
+	24 & 128 & 128 & 128 & 128\\ \hline
+	200 & 128 & 128 & 128 & 128 \\ \hline
+	321 & 1024 & 1024 & 1024 & 1024 \\
+\hline
+\end{tabular}
+
+Todas son implementaciones son correctas, debido a que un generador congruencial multiplicativo lineal por definición tiene como periodo máximo $\frac{m}{4}$ y lo alcanza cuando $x_0$ es impar (como es nuestro caso). En caso contrario, no alcanza su periodo máximo como se puede observar en la tabla para los valores pares escogidos y para cualquiera que se escoja.
 
 \end{document}
 

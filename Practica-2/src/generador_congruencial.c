@@ -65,7 +65,7 @@ int main(int argc, char* argv[]){
     }
 
     long long int* valores_generados;
-    int x0 = 1;
+    int x0 = 321;
     int a = 1013;
     long long int m = pow(2,12);
 

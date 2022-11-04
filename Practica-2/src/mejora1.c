@@ -23,9 +23,9 @@ double* construye_prop_a(int n) //Construye la tabla de b�squeda de
         fputs("Error reservando memoria para generador uniforme\n",stderr);
         exit(1);
     }
-    temp[n-1] = 1.0/n;
-    for(int i = n-2; i>=0; i--) 
-        temp[i] = temp[i+1] + 1.0/n;
+    temp[0] = 1.0/n;
+    for (i=1;i<n;i++)
+        temp[i] = temp[i-1]+1.0/n;
     return temp;
 }
 
@@ -42,9 +42,9 @@ double* construye_prop_b(int n) //Construye la tabla de b�squeda de
         exit(1);
     }
     max = (n+1)*n/2;
-    temp[n-1] = 1.0/max;
-    for (int i=n-2;i>=0;i--)
-        temp[i] = temp[i+1]+(double)(i+1)/max;
+    temp[0] = 1.0/max;
+    for (i=1;i<n;i++)
+        temp[i] = temp[i-1]+(double)(i+1)/max;
     return temp;  
 }
 
@@ -60,11 +60,11 @@ double* construye_prop_c(int n) //Construye la tabla de b�squeda de
         exit(1);
     }
     max = n*n/4;
-    temp[n-1] = 0.0;
-    for (i=n-2;i>(n/2);i--)
-        temp[i] = temp[i+1]+(double)(n-i)/max;
-    for (i=(n/2);i>=0;i--)
-        temp[i] = temp[i+1]+(double)i/max;
+    temp[0] = 0.0;
+    for (i=1;i<(n/2);i++)
+        temp[i] = temp[i-1]+(double)i/max;
+    for (i=(n/2);i<n;i++)
+        temp[i] = temp[i-1]+(double)(n-i)/max;
     return temp;
 }
 
@@ -98,15 +98,21 @@ int main(int argc, char* argv[]){
     }
 
     srand(time(NULL)); //Inicializa el generador de números pseudoaleatorios
-    double* tablabdemanda;
+    double* tablabdemanda = (double*) malloc(100*sizeof(double));
+    double* probs ;
 
     //Construye la tabla de búsqueda en funcion del tipo de tabla
     if(tipo_tabla == 1) {
-        tablabdemanda = construye_prop_a(100);
+        probs = construye_prop_a(100);
     } else if(tipo_tabla == 2) {
-        tablabdemanda = construye_prop_b(100);
+        probs = construye_prop_b(100);
     } else {
-        tablabdemanda = construye_prop_c(100);
+        probs = construye_prop_c(100);
+    }
+
+    // Darle la vuelta a las tablas
+    for(int i = 0; i < 100; i++) {
+        tablabdemanda[100-i-1] = probs[i];
     }
 
     int demanda;
