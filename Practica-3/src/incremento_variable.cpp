@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int generaLlegada(float tlleg)
+float generaLlegada(float tlleg)
 {
     float u = (float)random();         // o también rand() en lugar de random()
     u = (float)(u / (RAND_MAX + 1.0)); // RAND_MAX es una constante del sistema
@@ -11,7 +11,7 @@ int generaLlegada(float tlleg)
     return round(lleg == 0 ? 1.0 : lleg);
 }
 
-int generaServicio(float tserv)
+float generaServicio(float tserv)
 {
     float u = (float)random();         // o también rand() en lugar de random()
     u = (float)(u / (RAND_MAX + 1.0)); // RAND_MAX es una constante del sistema
@@ -28,9 +28,9 @@ int main(int argc, char *argv[])
 {
     srand(time(NULL));
 
+    long long int total_a_atender;
     float tlleg;
     float tserv;
-    int total_a_atender;
 
     if (argc != 4)
     {
@@ -44,17 +44,16 @@ int main(int argc, char *argv[])
         tserv = atof(argv[3]);
     }
 
-    float infinito = 10e30;
-    int atendidos = 0;
-    float inicio_ocio = 0.0;
-    float acum_cola = 0.0;
-    float reloj = 0.0;
     bool servidor_libre = true;
-    int encola = 0;
-
+    long long int atendidos = 0;
+    long long int encola = 0;
+    long long int infinito = 10e30;
+    float acum_cola = 0.0;
+    float inicio_ocio = 0.0;
+    float ocio = 0.0;
+    float reloj = 0.0;
     float tiempo_llegada = reloj + generaLlegada(tlleg);
     float tiempo_salida = infinito;
-    float ocio = 0.0;
     float tultsuc = 0.0;
 
     while (atendidos < total_a_atender)
@@ -76,7 +75,7 @@ int main(int argc, char *argv[])
                 encola++;
             }
         }
-        if (reloj = tiempo_salida)
+        if (reloj == tiempo_salida)
         {
             atendidos++;
             if (encola > 0)
