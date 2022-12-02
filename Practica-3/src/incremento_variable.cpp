@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int generaLlegada(int tlleg)
+int generaLlegada(float tlleg)
 {
     float u = (float)random();         // o también rand() en lugar de random()
     u = (float)(u / (RAND_MAX + 1.0)); // RAND_MAX es una constante del sistema
@@ -11,7 +11,7 @@ int generaLlegada(int tlleg)
     return round(lleg == 0 ? 1.0 : lleg);
 }
 
-int generaServicio(int tserv)
+int generaServicio(float tserv)
 {
     float u = (float)random();         // o también rand() en lugar de random()
     u = (float)(u / (RAND_MAX + 1.0)); // RAND_MAX es una constante del sistema
@@ -24,20 +24,36 @@ float min(float a, float b)
     return a < b ? a : b;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-    long long int infinito = 10e30;
+    srand(time(NULL));
+
+    float tlleg;
+    float tserv;
+    int total_a_atender;
+
+    if (argc != 4)
+    {
+        cerr << "ERROR: número de argumentos inválido." << endl;
+        cerr << "Uso correcto: ./" << argv[0] << " <clientes_a_atender> <tllegada> <tservicio>" << endl;
+    }
+    else
+    {
+        total_a_atender = atoi(argv[1]);
+        tlleg = atof(argv[2]);
+        tserv = atof(argv[3]);
+    }
+
+    float infinito = 10e30;
     int atendidos = 0;
     float inicio_ocio = 0.0;
     float acum_cola = 0.0;
     float reloj = 0.0;
     bool servidor_libre = true;
     int encola = 0;
-    int tlleg = 0;
-    int tserv = 0;
+
     float tiempo_llegada = reloj + generaLlegada(tlleg);
-    long long int tiempo_salida = infinito;
-    int total_a_atender = 0;
+    float tiempo_salida = infinito;
     float ocio = 0.0;
     float tultsuc = 0.0;
 
@@ -80,7 +96,6 @@ int main()
     }
 
     float porcent_ocio = ocio * 100 / reloj;
-    cout << porcent_ocio << endl;
     float media_encola = acum_cola / reloj;
-    cout << media_encola;
+    cout << porcent_ocio << "," << media_encola << endl;
 }

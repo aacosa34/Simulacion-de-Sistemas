@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int generaLlegada(int tlleg)
+int generaLlegada(float tlleg)
 {
     float u = (float)random();         // o también rand() en lugar de random()
     u = (float)(u / (RAND_MAX + 1.0)); // RAND_MAX es una constante del sistema
@@ -11,7 +11,7 @@ int generaLlegada(int tlleg)
     return round(lleg == 0 ? 1.0 : lleg);
 }
 
-int generaServicio(int tserv)
+int generaServicio(float tserv)
 {
     float u = (float)random();         // o también rand() en lugar de random()
     u = (float)(u / (RAND_MAX + 1.0)); // RAND_MAX es una constante del sistema
@@ -22,26 +22,33 @@ int generaServicio(int tserv)
 int main(int argc, char *argv[])
 {
     srand(time(NULL));
+    int total_a_atender;
+    float tlleg;
+    float tserv;
 
-    if (argc < 4)
+    if (argc != 4)
     {
         cerr << "ERROR: número de argumentos inválido." << endl;
-        cerr << "./";
+        cerr << "Uso correcto: ./" << argv[0] << " <clientes_a_atender> <tllegada> <tservicio>" << endl;
+    }
+    else
+    {
+        total_a_atender = atoi(argv[1]);
+        tlleg = atof(argv[2]);
+        tserv = atof(argv[3]);
     }
 
-    long long int infinito = 10e30;
+    float infinito = 10e30;
     int atendidos = 0;
     float inicio_ocio = 0.0;
     float acum_cola = 0.0;
     int reloj = 0;
     bool servidor_libre = true;
     int encola = 0;
-    float tlleg = 0.0;
-    float tserv = 0.0;
+
     float ocio = 0.0;
-    long long int tiempo_llegada = reloj + generaLlegada(tlleg);
-    long long int tiempo_salida = infinito;
-    int total_a_atender = 0;
+    float tiempo_llegada = reloj + generaLlegada(tlleg);
+    float tiempo_salida = infinito;
     int tultsuc = 0;
 
     while (atendidos < total_a_atender) // simularemos hasta que hayamos atendido a cierto
@@ -91,7 +98,6 @@ int main(int argc, char *argv[])
     }
 
     float porcent_ocio = ocio * 100 / reloj; // calculamos el porcentaje de tiempo de ocio del servidor
-    cout << porcent_ocio << endl;
-    float media_encola = acum_cola / reloj; // calculamos el número medio de clientes en cola
-    cout << media_encola << endl;
+    float media_encola = acum_cola / reloj;  // calculamos el número medio de clientes en cola
+    cout << porcent_ocio << "," << media_encola << endl;
 }
