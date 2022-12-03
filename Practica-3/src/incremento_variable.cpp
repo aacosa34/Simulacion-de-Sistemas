@@ -44,57 +44,72 @@ int main(int argc, char *argv[])
         tserv = atof(argv[3]);
     }
 
-    bool servidor_libre = true;
-    long long int atendidos = 0;
-    long long int encola = 0;
-    long long int infinito = 10e30;
-    float acum_cola = 0.0;
-    float inicio_ocio = 0.0;
-    float ocio = 0.0;
-    float reloj = 0.0;
-    float tiempo_llegada = reloj + generaLlegada(tlleg);
-    float tiempo_salida = infinito;
-    float tultsuc = 0.0;
+    int num_veces = 1000;
+    float totalPorcentajeOcio = 0.0, totalMediaEnCola = 0.0;
 
-    while (atendidos < total_a_atender)
+    for (int i = 0; i < num_veces; i++)
     {
-        reloj = min(tiempo_llegada, tiempo_salida); // una función que calcula el mínimo
-        if (reloj == tiempo_llegada)
+        bool servidor_libre = true;
+        long long int atendidos = 0;
+        long long int encola = 0;
+        long long int infinito = 10e30;
+        float acum_cola = 0.0;
+        float inicio_ocio = 0.0;
+        float ocio = 0.0;
+        float reloj = 0.0;
+        float tiempo_llegada = reloj + generaLlegada(tlleg);
+        float tiempo_salida = infinito;
+        float tultsuc = 0.0;
+
+        while (atendidos < total_a_atender)
         {
-            tiempo_llegada = reloj + generaLlegada(tlleg);
-            if (servidor_libre)
+            reloj = min(tiempo_llegada, tiempo_salida); // una función que calcula el mínimo
+            if (reloj == tiempo_llegada)
             {
-                servidor_libre = false;
-                tiempo_salida = reloj + generaServicio(tserv);
-                ocio += reloj - inicio_ocio;
+                tiempo_llegada = reloj + generaLlegada(tlleg);
+                if (servidor_libre)
+                {
+                    servidor_libre = false;
+                    tiempo_salida = reloj + generaServicio(tserv);
+                    ocio += reloj - inicio_ocio;
+                }
+                else
+                {
+                    acum_cola += (reloj - tultsuc) * encola;
+                    tultsuc = reloj;
+                    encola++;
+                }
             }
-            else
+            if (reloj == tiempo_salida)
             {
-                acum_cola += (reloj - tultsuc) * encola;
-                tultsuc = reloj;
-                encola++;
+                atendidos++;
+                if (encola > 0)
+                {
+                    acum_cola += (reloj - tultsuc) * encola;
+                    tultsuc = reloj;
+                    encola--;
+                    tiempo_salida = reloj + generaServicio(tserv);
+                }
+                else
+                {
+                    servidor_libre = true;
+                    inicio_ocio = reloj;
+                    tiempo_salida = infinito;
+                }
             }
         }
-        if (reloj == tiempo_salida)
-        {
-            atendidos++;
-            if (encola > 0)
-            {
-                acum_cola += (reloj - tultsuc) * encola;
-                tultsuc = reloj;
-                encola--;
-                tiempo_salida = reloj + generaServicio(tserv);
-            }
-            else
-            {
-                servidor_libre = true;
-                inicio_ocio = reloj;
-                tiempo_salida = infinito;
-            }
-        }
+
+        float porcentajeOcio = ocio * 100 / reloj; // calculamos el porcentaje de tiempo de ocio del servidor
+        float mediaEnCola = acum_cola / reloj;     // calculamos el número medio de clientes en cola
+
+        cout << porcentajeOcio << "," << mediaEnCola << endl;
+
+        totalPorcentajeOcio += porcentajeOcio;
+        totalMediaEnCola += mediaEnCola;
     }
 
-    float porcent_ocio = ocio * 100 / reloj;
-    float media_encola = acum_cola / reloj;
-    cout << porcent_ocio << "," << media_encola << endl;
+    float porcentajeMedioOcio = totalPorcentajeOcio / num_veces;
+    float mediaEnCola = totalMediaEnCola = totalMediaEnCola / num_veces;
+
+    cout << "Porcentaje medio de Ocio = " << porcentajeMedioOcio << "\tTiempo de media en cola = " << mediaEnCola << endl;
 }
