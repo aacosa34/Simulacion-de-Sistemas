@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
     }
 
     int num_veces = 1000;
+    float totalPorcentajeOcio = 0.0, totalMediaEnCola = 0.0;
 
     for (int i = 0; i < num_veces; i++)
     {
