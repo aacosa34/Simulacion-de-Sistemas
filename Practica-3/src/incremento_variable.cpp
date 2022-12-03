@@ -1,7 +1,9 @@
 #include <iostream>
 #include <cmath>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 float generaLlegada(float tlleg)
 {
@@ -45,7 +47,6 @@ int main(int argc, char *argv[])
     }
 
     int num_veces = 1000;
-    float totalPorcentajeOcio = 0.0, totalMediaEnCola = 0.0;
 
     for (int i = 0; i < num_veces; i++)
     {
@@ -60,6 +61,9 @@ int main(int argc, char *argv[])
         float tiempo_llegada = reloj + generaLlegada(tlleg);
         float tiempo_salida = infinito;
         float tultsuc = 0.0;
+
+        high_resolution_clock::time_point inicio, fin;
+        inicio = high_resolution_clock::now();
 
         while (atendidos < total_a_atender)
         {
@@ -99,17 +103,12 @@ int main(int argc, char *argv[])
             }
         }
 
+        fin = high_resolution_clock::now();
+
+        float tiempoEjecucion = duration_cast<duration<float>>(fin - inicio).count();
         float porcentajeOcio = ocio * 100 / reloj; // calculamos el porcentaje de tiempo de ocio del servidor
         float mediaEnCola = acum_cola / reloj;     // calculamos el número medio de clientes en cola
 
-        cout << porcentajeOcio << "," << mediaEnCola << endl;
-
-        totalPorcentajeOcio += porcentajeOcio;
-        totalMediaEnCola += mediaEnCola;
+        cout << porcentajeOcio << "," << mediaEnCola << "," << tiempoEjecucion << endl;
     }
-
-    float porcentajeMedioOcio = totalPorcentajeOcio / num_veces;
-    float mediaEnCola = totalMediaEnCola = totalMediaEnCola / num_veces;
-
-    cout << "Porcentaje medio de Ocio = " << porcentajeMedioOcio << "\tTiempo de media en cola = " << mediaEnCola << endl;
 }
