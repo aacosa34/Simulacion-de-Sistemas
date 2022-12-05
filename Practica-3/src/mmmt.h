@@ -22,8 +22,8 @@ typedef struct
 } suc;
 float reloj;
 int maquinas_libres;
-bool operario_libre;
 int encola_lleg;
+int operarios_libres;
 list<float> cola_llegadas;
 int encola_sal;
 list<float> cola_salidas;
@@ -45,7 +45,8 @@ float **informe;
 int cont_simu;
 
 /* Parametros de entrada */
-int num_maquinas = 1; // 10;
+int num_operarios = 10;
+int num_maquinas = 10;
 float tllegada = 6;
 float tcarga = 0.6;	   // 1.5; //3;
 float tdescarga = 0.4; // 1; //2;

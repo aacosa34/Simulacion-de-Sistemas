@@ -16,9 +16,9 @@ using namespace std;
 
 typedef struct
 {
-	int suceso;
-	float tiempo;
-	float tllego;
+    int suceso;
+    float tiempo;
+    float tllego;
 } suc;
 float reloj;
 int maquinas_libres;
@@ -45,11 +45,11 @@ float **informe;
 int cont_simu;
 
 /* Parametros de entrada */
-int num_maquinas = 1; // 10;
+int num_maquinas = 10;
 float tllegada = 6;
-float tcarga = 0.6;	   // 1.5; //3;
+float tcarga = 0.6;    // 1.5; //3;
 float tdescarga = 0.4; // 1; //2;
-float tproceso = 0.8;  // 8;
+float tproceso = 8;
 float tparada = 480.0; // 8 horas
 
 /* Funciones y procedimientos */
@@ -65,7 +65,7 @@ float genera_trabajo(float tllegada);
 float genera_carga(float tcarga);
 float genera_descarga(float tdescarga);
 float genera_procesamiento(float tprocesamiento);
-float generador_exponencial(float media);
+float generador_deterministico(float media);
 bool compare(const suc &s1, const suc &s2);
 void insertar_lsuc(suc n);
 bool busca_suceso(int tipo);

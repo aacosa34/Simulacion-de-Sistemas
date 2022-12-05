@@ -1,4 +1,4 @@
-#include "multiplesmaquinas1trabajador.h"
+#include "mm1t-uni.h"
 
 bool compare(const suc &s1, const suc &s2)
 {
@@ -273,33 +273,36 @@ void generador_informes(int simulaciones)
 // Generador de tiempos entre llegadas de trabajos
 float genera_trabajo(float tllegada)
 {
-  return generador_exponencial(tllegada);
+  return generador_uniforme(tllegada);
 }
 
 // Generador de tiempos de carga
 float genera_carga(float tcarga)
 {
-  return generador_exponencial(tcarga);
+  return generador_uniforme(tcarga);
 }
 
 // Generador de tiempos de descarga
 float genera_descarga(float tdescarga)
 {
-  return generador_exponencial(tdescarga);
+  return generador_uniforme(tdescarga);
 }
 
 // Generador de tiempos de procesamiento
 float genera_procesamiento(float tproceso)
 {
-  return generador_exponencial(tproceso);
+  return generador_uniforme(tproceso);
 }
 
-float generador_exponencial(float media)
+float generador_uniforme(float media)
 {
   float u;
   u = (float)random();
   u = (float)(u / (RAND_MAX + 1.0));
-  return (-media * log(1 - u));
+  // sería -> min + (max - min) * u
+  // Para calcular el maximo y el minimo de 'media'
+  // su min = 0 y su max = 2 * media.
+  return 2 * media * u;
 }
 
 /* Programa principal */

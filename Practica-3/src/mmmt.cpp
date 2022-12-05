@@ -1,4 +1,4 @@
-#include "multiplesmaquinas1trabajador.h"
+#include "mmmt.h"
 
 bool compare(const suc &s1, const suc &s2)
 {
@@ -21,7 +21,7 @@ void inicializacion()
 
   // inicializacion de variables de estado
   reloj = 0.0;
-  operario_libre = true;
+  operarios_libres = num_operarios;
   maquinas_libres = num_maquinas;
   encola_lleg = 0;
   while (!cola_llegadas.empty())
@@ -98,13 +98,13 @@ void llegada_trabajo()
   nodo.tiempo = reloj + genera_trabajo(tllegada);
   nodo.tllego = 0;
   insertar_lsuc(nodo); // programa la proxima llegada
-  if (operario_libre && maquinas_libres > 0)
+  if (operarios_libres > 0 && maquinas_libres > 0)
   {
     nodo.suceso = SUCESO_FIN_CARGA;
     nodo.tiempo = reloj + genera_carga(tcarga);
     nodo.tllego = reloj;
     insertar_lsuc(nodo);
-    operario_libre = false;
+    operarios_libres--;
     maquinas_libres--;
     acum_ocio += reloj - comienzo_ocio;
   }
@@ -153,7 +153,7 @@ void fin_carga()
   }
   else
   {
-    operario_libre = true;
+    operarios_libres++;
     comienzo_ocio = reloj;
   }
 }
@@ -161,13 +161,13 @@ void fin_carga()
 /* Procedimiento fin de procesamiento */
 void fin_procesamiento()
 {
-  if (operario_libre)
+  if (operarios_libres > 0)
   {
     nodo.suceso = SUCESO_FIN_DESCARGA;
     nodo.tiempo = reloj + genera_descarga(tdescarga);
     // nodo.tllego se deja como esta, se hereda del suceso actual
     insertar_lsuc(nodo);
-    operario_libre = false;
+    operarios_libres--;
     acum_ocio += reloj - comienzo_ocio;
   }
   else
@@ -214,7 +214,7 @@ void fin_descarga()
   }
   else
   {
-    operario_libre = true;
+    operarios_libres++;
     comienzo_ocio = reloj;
   }
 }
@@ -227,7 +227,7 @@ void fin_simulacion()
   parar = true;
   acum_lleg += (reloj - tdus_lleg) * encola_lleg;
   acum_sal += (reloj - tdus_sal) * encola_sal;
-  if (operario_libre)
+  if (operarios_libres > 0)
     acum_ocio += reloj - comienzo_ocio;
   // printf("\nNumero de trabajos esperando ser cargados = %f",acum_lleg/reloj);
   informe[cont_simu][0] = acum_lleg / reloj;

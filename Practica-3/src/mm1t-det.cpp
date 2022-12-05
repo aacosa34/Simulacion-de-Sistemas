@@ -1,4 +1,4 @@
-#include "multiplesmaquinas1trabajador.h"
+#include "mm1t-det.h"
 
 bool compare(const suc &s1, const suc &s2)
 {
@@ -273,33 +273,30 @@ void generador_informes(int simulaciones)
 // Generador de tiempos entre llegadas de trabajos
 float genera_trabajo(float tllegada)
 {
-  return generador_exponencial(tllegada);
+  return generador_deterministico(tllegada);
 }
 
 // Generador de tiempos de carga
 float genera_carga(float tcarga)
 {
-  return generador_exponencial(tcarga);
+  return generador_deterministico(tcarga);
 }
 
 // Generador de tiempos de descarga
 float genera_descarga(float tdescarga)
 {
-  return generador_exponencial(tdescarga);
+  return generador_deterministico(tdescarga);
 }
 
 // Generador de tiempos de procesamiento
 float genera_procesamiento(float tproceso)
 {
-  return generador_exponencial(tproceso);
+  return generador_deterministico(tproceso);
 }
 
-float generador_exponencial(float media)
+float generador_deterministico(float media)
 {
-  float u;
-  u = (float)random();
-  u = (float)(u / (RAND_MAX + 1.0));
-  return (-media * log(1 - u));
+  return media;
 }
 
 /* Programa principal */
