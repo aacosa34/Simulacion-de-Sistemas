@@ -1,0 +1,10 @@
+
+
+INFORME ->
+
+Numero de trabajos esperando ser cargados: media(0.000976), dt(0.008401)
+Numero de trabajos esperando ser descargados: media(0.000000), dt(0.000000)
+Numero de trabajos procesados: media(77.057999), dt(8.686078)
+Tiempo de estancia de los trabajos: media(18.495319), dt(1.422660)
+Porcentaje de tiempo de ocio del operario: media(71.040489), dt(9.193613)
+

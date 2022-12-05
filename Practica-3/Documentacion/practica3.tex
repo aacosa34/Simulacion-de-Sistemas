@@ -288,7 +288,50 @@ Se pide que se investigue qué ocurre si cambiamos el procesamiento con un núme
 
 El comportamiento en este caso es muy similar, siendo la espera de la carga un poco mayor que antes, pero el de descarga es 0 debido a la alta velocidad que tiene. En el caso de los trabajos procesados, se procesa de media 1 trabajo y medio más que en el sistema con 10 máquinas. En el caso del tiempo que tardan los trabajos en ser procesados, vemos como la velocidad de media es mucho mayor (como es de esperar). Y por último, el tiempo de ocio no ha variado notablemente.
 
+\newpage
+\section{Múltiples operarios}
 
+Ahora, tal y como se pide en el guión, procedo a realizar la implementación de múltiples operarios en el modelo proporcionado para la práctica.
+
+En primer lugar, en el fichero $.h$ lo que haremos será cambiar la variable booleana \texttt{operario\_libre} a una variable entera que será un contador que indicará la cantidad de operarios libres en ese momento. También habrá que crear una variable \texttt{num\_operarios} para indicar el número máximo de operarios que hay disponibles en el sistema.
+ 
+Tras esto, en el fichero $.cpp$ tendremos que actualizar el proceso de inicialización de variables, el cual tendrá que ajustar la variable \texttt{operarios\_libres} (la variable que anteriormente era un bool) al número total de operarios disponibles ya que al inicio se encuentrarán todos disponibles. Una vez hecho esto, tenemos que cambiar todas las veces que aparecía la variable booleana como condición de una sentencia $if$. Lo que habría que hacer es añadirle que la variable sea mayor que 0, o lo que es lo mismo, que haya operarios disponibles que puedan atender las peticiones. Además, hay que cambiar todas las veces que aparezca la asignación $\texttt{operario\_libre} = \texttt{true}$ por un incremento y cuando se le asigne \texttt{false} un decremento. Esto indicará que un operario ha sido ocupado o ha sido liberado.
+
+Con esos cambios ya lo tendríamos todo listo, ahora solo queda probar el sistema con distinto número de elementos. Las distintas combinaciones que voy a probar son las siguientes para realizar la tarea pedida en el guión de prácticas:
+
+\begin{itemize}
+	\item{10 operarios con $\texttt{tcarga} = 10$ y $\texttt{tdescarga} = 8$}
+	\item{1 operario con $\texttt{tcarga} = 1$ y $\texttt{tdescarga} = 0.8$}
+	\item{5 operarios con $\texttt{tcarga} = 5$ y $\texttt{tdescarga} = 4$}
+\end{itemize}
+
+\newpage
+Los datos obtenidos en las simulaciones (todas con un número de simulaciones de 1000) de todas estas combinaciones son los siguientes:
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+	\hline
+		 & \textbf{\begin{tabular}[c]{@{}c@{}}10 operarios\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}1 operario\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}5 operarios\end{tabular}}\\
+	\hline
+		\textbf{\begin{tabular}[c]{@{}c@{}}Media trabajos\\ esperando carga\end{tabular}} & 0.000976 & 0.075536 & 0.004666 \\
+	\hline
+		\textbf{\begin{tabular}[c]{@{}c@{}}Media trabajos \\esperando descarga\end{tabular}} & 0 & 0.048112 & 0.003035\\
+	\hline
+		\textbf{\begin{tabular}[c]{@{}c@{}}Media de\\ trabajos procesados\end{tabular}} & 77.057999 & 79.570000 & 78.613998\\
+	\hline
+		\textbf{\begin{tabular}[c]{@{}c@{}}Tiempo medio de \\ estancia de los trabajos\end{tabular}} & 18.495319 & 3.325153 & 9.724446\\
+	\hline
+		\textbf{\begin{tabular}[c]{@{}c@{}}Porcent. medio \\tiempo de ocio\end{tabular}} & 71.040489 & 70.050056 & 75.504265\\
+	\hline
+	\end{tabular}
+\end{center}
+
+Si interpretamos los datos obtenidos por las tres simulaciones hechas, podemos observar como en este caso la mejor opción es tener 1 operario que sea 10 veces más rapido que cada uno de los operarios del caso de los 10 operarios. Esto lo vemos en la media de trabajos procesados, siento de 79.57 trabajos en el caso de 1 operario frente a las 77.058 en el caso de 10 operarios y 78.61 en el caso de 5 operarios con la mitad de \texttt{tcarga} y \texttt{tdescarga} con respecto del de 10 operarios.
+
+Seguido de esto, tendríamos que también mejoramos el sistema en el caso de usar la mitad de operarios pero el doble de rápidos que en el caso inicial ya que son capaces de conseguir un trabajo más que en la simulación de los 10 operarios. 
+
+
+\chapter{Análisis de Salidas y Experimentación}
 
 \end{document}
 
