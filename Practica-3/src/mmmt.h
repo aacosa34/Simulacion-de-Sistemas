@@ -45,11 +45,11 @@ float **informe;
 int cont_simu;
 
 /* Parametros de entrada */
-int num_operarios = 1;
+int num_operarios = 10;
 int num_maquinas = 10;
 float tllegada = 6;
-float tcarga = 1.5;
-float tdescarga = 1;
+float tcarga = 6;
+float tdescarga = 4;
 float tproceso = 0.8;  // 8;
 float tparada = 480.0; // 8 horas
 
