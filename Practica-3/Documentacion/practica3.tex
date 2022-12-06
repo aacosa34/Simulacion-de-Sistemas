@@ -330,8 +330,100 @@ Si interpretamos los datos obtenidos por las tres simulaciones hechas, podemos o
 
 Seguido de esto, tendríamos que también mejoramos el sistema en el caso de usar la mitad de operarios pero el doble de rápidos que en el caso inicial ya que son capaces de conseguir un trabajo más que en la simulación de los 10 operarios. 
 
-
 \chapter{Análisis de Salidas y Experimentación}
+
+\newpage
+
+\section{¿Cuánto hay que simular?}
+
+Para este primer apartado, el guión pide que comparemos dos configuraciones para el sistema que nos encontramos estudiando:
+
+\begin{itemize}
+	\item{La configuracion A con 10 máquinas y 2 operarios y con tiempos de carga y descarga de 3 y 2 minutos.}
+	\item{La configuración B con 10 máquinas y 1 operario y con tiempos de carga y descarga de 1.5 y 1 minutos.}
+\end{itemize}
+
+En primer lugar se nos pide que probemos el sistema con 1 simulación y repitamos 100 veces para obtener el porcentaje de veces que es preferible un sistema frente a otro. Los datos que obtenemos de hacer esto lo vemos en la siguiente gráfica:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/cap-3/espera_carga_1-5-1.png}
+\caption{Numero de trabajos en espera de carga con 1 simulación repetido 100 veces}
+\end{figure}
+
+En este caso podemos ver que el 100\% de las veces escogemos el sistema A, ya que es el que obtiene menor número de trabajos en espera de carga.
+
+Para el caso de ejecutar 5 simulaciones para cada sistema obtenemos los siguientes resultados:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/cap-3/espera_carga_1-5-5.png}
+\caption{Número de trabajos en espera de carga con 5 simulaciones repetido 100 veces}
+\label{}
+\end{figure}
+
+Y en este caso también vemos que el 100\% de las veces escogeríamos el sistema con la configuración de A. En el guión se pide que se repita esto mismo pero usando 10, 100, 500, 1000 y 10000 simulaciones. Los resultados los podemos ver en la siguiente gráfica:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/cap-3/espera_carga_todos.png}
+\caption{Comparativa entre ambos sistemas con 10, 100, 500, 1000 y 10000 simulaciones.}
+\label{}
+\end{figure}
+
+La interpretación que sacamos a partir de esta gráfica es que a medida que aumentamos el número de simulaciones, obtenemos unos valores cada vez más precisos. En este caso podemos ver como es la configuración del sistema A el que obtiene un menor número de trabajos en espera de carga para todas las simulaciones, lo que se puede observar si nos fijamos en el conjunto de gráficas de la parte inferior las cuales son todas del sistema A para los distintos números de simulaciones.
+
+\newpage
+Por último, el guión pide que se haga lo mismo pero en este caso que comparemos en función del número total de trabajos procesados. En este caso nos tenemos que fijar quién tiene un mayor número de trabajos procesados para saber cuál es el mejor sistema. A continuación se muestran los datos obtenidos en forma de gráfica:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/cap-3/ttp_1-5-1.png}
+\caption{Total de trabajos procesados con 1 simulación repetido 100 veces}
+\label{}
+\end{figure}
+
+En esta gráfica podemos ver como es el sistema con la configuración B el que obtiene un mejor resultado el 100\% de las veces que se ejecuta. Vamos a ver ahora qué ocurre si usamos 5 simulaciones 100 veces:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/cap-3/ttp_1-5-5.png}
+\caption{Total de trabajos procesados con 5 simulaciones repetido 100 veces}
+\label{}
+\end{figure}
+
+En este caso obtenemos un resultado distinto. En aproximadamente un 27.5\% de las veces obtenemos que el B es el sistema preferible ya que procesa más trabajos que el sistema con la configuración A. En el resto de casos, preferimos escoger el sistema A frente al B.
+
+Ahora en el caso de ejecución de diferente número de simulaciones, si agrupamos todas las representaciones gráficas en una, no podremos ver con claridad qué sistema es mejor que el otro. Voy a poner aquí 3 gráficas que representan exactamente qué es lo que va ocurriendo a medida que aumentamos el número de simulaciones a la hora de elegir un sistema frente a otro.
+
+En la primera figura se representa cómo varían los datos cuando tenemos un número de simulaciones bastante reducido para el sistmea, en el que no sabríamos qué sistema elegir con certeza:
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{img/cap-3/ttp_100.png}
+\caption{Total de trabajos procesados con 100 simulaciones repetido 100 veces}
+\label{}
+\end{figure}
+
+En el segundo caso, vemos como con 1000 simulaciones en cada sistema podemos empezar a ver un claro sistema mejor que el otro, que en este caso se va decantando por el sistema B ya que es el que mayor porcentaje de trabajos procesados saca:
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{img/cap-3/ttp_1000.png}
+\caption{}
+\label{}
+\end{figure}
+
+Y por último, en el caso de las 10000 simulaciones para ambos sistemas, aclaramos lo que decíamos con la gráfica de 1000 simulaciones, en la que empezabamos a ver más o menos cómo B iba obteniendo mejores resultados que A pero en algunos casos era A el que lo superaba. Aquí estamos seguros al 100\% de que el sistema que tendríamos que escoger en función del número de trabajos procesados es el sistema con la configuración B.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{img/cap-3/ttp_10000.png}
+\caption{}
+\label{}
+\end{figure}
+
+\section{Intervalos de confianza}
+
+\section{Comparación de más de dos sistemas}
+
 
 \end{document}
 

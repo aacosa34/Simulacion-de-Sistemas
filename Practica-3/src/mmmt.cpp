@@ -260,13 +260,15 @@ void generador_informes(int simulaciones)
     dt[j] = sqrt((dt[j] - simulaciones * media[j] * media[j]) / (simulaciones - 1.0));
   }
 
-  printf("\n\nINFORME ->");
-  printf("\n\nNumero de trabajos esperando ser cargados: media(%f), dt(%f)", media[0], dt[0]);
-  printf("\nNumero de trabajos esperando ser descargados: media(%f), dt(%f)", media[1], dt[1]);
-  printf("\nNumero de trabajos procesados: media(%f), dt(%f)", media[2], dt[2]);
-  printf("\nTiempo de estancia de los trabajos: media(%f), dt(%f)", media[3], dt[3]);
-  printf("\nPorcentaje de tiempo de ocio del operario: media(%f), dt(%f)", media[4], dt[4]);
-  printf("\n\n");
+  // printf("\n\nINFORME ->");
+  // printf("\n\nNumero de trabajos esperando ser cargados: media(%f), dt(%f)", media[0], dt[0]);
+  // printf("\nNumero de trabajos esperando ser descargados: media(%f), dt(%f)", media[1], dt[1]);
+  // printf("\nNumero de trabajos procesados: media(%f), dt(%f)", media[2], dt[2]);
+  // printf("\nTiempo de estancia de los trabajos: media(%f), dt(%f)", media[3], dt[3]);
+  // printf("\nPorcentaje de tiempo de ocio del operario: media(%f), dt(%f)", media[4], dt[4]);
+  // printf("\n\n");
+
+  printf("%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n", media[0], dt[0], media[1], dt[1], media[2], dt[2], media[3], dt[3], media[4], dt[4]);
 }
 
 /* Generadores de datos */
