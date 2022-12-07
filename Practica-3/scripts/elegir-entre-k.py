@@ -38,7 +38,7 @@ operarios5 = transform_to_float("data/ejer3/3-3/estancia-operarios5.txt")
 operarios10 = transform_to_float("data/ejer3/3-3/estancia-operarios10.txt")
 
 n0 = 40
-d = 0.05
+d = 1
 h1 = 3.003
 k = 4
 

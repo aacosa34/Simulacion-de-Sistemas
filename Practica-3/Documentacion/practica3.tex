@@ -419,11 +419,69 @@ Y por último, en el caso de las 10000 simulaciones para ambos sistemas, aclaram
 \caption{}
 \label{}
 \end{figure}
-
+\newpage
 \section{Intervalos de confianza}
+
+Para este apartado, el guión de prácticas pide que se haga un estudio sobre si es mejor un sistema con 10 máquinas y 2 operarios con tiempos de carga y descarga de 3 y 2 minutos, respectivamente, o un sistema de 10 máquinas y 1 operario con tiempos de carga reducidos a la mitad con el método de intervalos de confianza tomando como medida el número de trabajos en espera de carga en un caso y el tiempo medio de estancia de los trabajos en otro.
+
+Para ello, lo primero que tenemos que hacer es conseguir las salidas de ambos sistemas para ambas medidas. He usado las medidas proporcionadas de cada sistema con un número de simulaciones de 1000 repetido 100 veces debido a que como se ha visto en el apartado anterior es cuando se obtienen unos valores más estables y reales de cómo funciona una configuración concreta y por lo menos seremos capaces de determinar de mejor manera qué sistema funciona mejor. Con el método de intervalos de confianza, podremos asegurar la elección que hicimos en el apartado anterior.
+
+El $\alpha$ elegido para este caso será un 0.05, con el cual obtendremos un intervalo de confianza al 95\%. Para poder realizar el cáclulo, lo que tenemos que hacer es conseguir la resta de los datos obtenidos por ambas configuraciones, calcularle la media y varianza de todos esos valores y calcular el intervalo con su valor de T de Student con $\alpha = 0.05$ y con $n-1$ grados de libertad. En este caso, tal y como he dicho en el párrafo anterior, usaré un $n=100$ y por lo tanto el calculo de la T-Student se hará con 99 grados de libertad. Los datos finales que he obtenido han sido los siguientes para ambas medidas solicitadas:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+	\textbf{Medida} & \textbf{Media de (A-B)} & \textbf{Intervalo de confianza}\\
+\hline
+	\begin{tabular}[c]{@{}c@{}}Número de trabajos\\ en espera de carga\end{tabular} & -0.07660488 & [-0.07685767, -0.07635208]\\
+\hline
+	\begin{tabular}[c]{@{}c@{}}Tiempo medio de \\estancia en los trabajos\end{tabular} & 1.78550845 & [1.78324745, 1.78776944]\\
+\hline
+\end{tabular}
+\end{center}
+
+Las conclusiones que podemos sacar de estos resultados son que para ambas medidas, al no encontrarse el 0 dentro del intervalo, podemos confirmar que A y B no son iguales con un 95\% de confianza. Como no son iguales, quiere decir que uno es mejor que otro:
+
+\begin{itemize}
+	\item{Para el número de trabajos en espera de carga, al tener una media negativa, quiere decir que el mejor sistema es el A ya que obtiene un menor número de trabajos esperando (si la media es negativa significa que B obtiene mayores valores que A)}
+	\item{Para el tiempo medio de estancia en los trabajos, tenemos que el sistema B es más eficiente que el A, ya que la media es positiva lo que quiere decir que B termina antes los trabajos que A.}
+\end{itemize}
+
 
 \section{Comparación de más de dos sistemas}
 
+En el guión de prácticas también se pide que se comparen cuatro configuraciones distintas para ver qué sistema es el mejor. La medida de rendimiento a utilizar es el tiempo medio de estancia de los trabajos.
+
+Para realizar esta comparación, usaré el método que aparece en las diapositivas de teoría, el método de selección del mejor entre $k$ sistemas. Para poder aplicar dicho método de comparación hay que escoger una serie de parámetros:
+
+\begin{itemize}
+	\item{Lo primero que tenemos que elegir es un valor de $P^*$, cuya elección depende la precisión que queramos del resultado. Obviamente queremos una buena precisión para elegir el mejor sistema, por lo que usaremos una probabilidad suficientemente alta. En este caso usaré un valor de probabilidad del 95\% y por tanto un valor de $P^*=0.95$.}
+	\item{Tenemos que elegir también el valor de la indiferencia. En este caso elegiré $d^*=1$.}
+	\item{El valor de $n_0$ que escogeré será de 40}
+	\item{Por lo tanto, el valor de $h_1$ que tendré que escoger es 3.003 (ya ue va en función del valor de $k$ y $P^*$.}
+\end{itemize}
+
+Los resultados de $X^p_i(N_i)$ que he obtenido para cada sistema son los siguientes: 
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+	\textbf{Sistema} & \textbf{$X^p_i(N_i)$}\\
+\hline
+	\textbf{10 máquinas 1 operario} & 1.454\\
+\hline
+	\textbf{10 máquinas 2 operario} & 3.035\\
+\hline
+	\textbf{10 máquinas 5 operario} & 5.551\\
+\hline
+	\textbf{10 máquinas 10 operario} & 10.419\\
+\hline
+\end{tabular}
+\end{center}
+
+Para poder analizar esos resultados, tenemos que ver qué configuración es la que tiene un valor menor de $X^p_i(N_i)$ ya que nos interesa el sistema que tenga menor tiempo medio de estancia de los trabajos, lo que indicará que procesa el trabajo con mayor velocidad que el resto.
+
+Por lo tanto, teniendo en cuenta ésto, la mejor configuración es la de 1 operario con tiempos de carga y descarga de 0.6 minutos y 0.4 minutos respectivamente.
 
 \end{document}
 
