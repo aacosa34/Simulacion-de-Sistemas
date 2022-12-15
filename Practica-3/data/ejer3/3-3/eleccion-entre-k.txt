@@ -1,0 +1,5 @@
+n0: 40
+10 maquinas, 1 operario -> media 1: 1.999 var: 0.00003473 N: 41 media 2: 2.009 w1: 56.792 w2: -55.792 xp: 1.454
+10 maquinas, 2 operarios -> media 1: 2.851 var: 0.00004693 N: 41 media 2: 2.847 w1: 48.986 w2: -47.986 xp: 3.035
+10 maquinas, 5 operarios -> media 1: 5.772 var: 0.000 N: 41 media 2: 5.782 w1: 25.195 w2: -24.195 xp: 5.551
+10 maquinas, 10 operarios -> media 1: 10.685 var: 0.001 N: 41 media 2: 10.707 w1: 12.867 w2: -11.867 xp: 10.419
