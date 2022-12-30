@@ -1,0 +1,5 @@
+Numero medio de lineas ocupadas: 41.3497
+Porcentaje medio de lineas ocupadas: 68.9162%
+Numero medio de llamadas atendidas: 7451.84
+Numero medio de llamadas perdidas: 13.296
+Porcentaje medio de llamadas perdidas: 0.178094%

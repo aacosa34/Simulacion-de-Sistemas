@@ -1,0 +1,4 @@
+Media dias sin espacio: 4.2528
+Media latas donadas: 90.928
+Media dias sin satisfacer: 3.7388
+Media latas no vendidas: 122.941
